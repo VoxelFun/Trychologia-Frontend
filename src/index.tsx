@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { ThemeProvider } from 'styled-components';
+import { Theme } from './data/Theme';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <ThemeProvider theme={Theme}>
+        <App />
+      </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
