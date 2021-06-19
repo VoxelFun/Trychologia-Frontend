@@ -1,6 +1,5 @@
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import { Company } from "../data/Company";
-import { PAGE_NAME } from "../data/Page";
 import { PageHook } from "../library/PageHook";
 import logo from "../logo.svg";
 
@@ -11,7 +10,7 @@ interface Props {
 export function TopNavbar(props: Props) {
     return (
         <Navbar bg="light" expand="md" sticky="top">
-            <Navbar.Brand href="#home">
+            <Navbar.Brand onClick={() => props.redirect("/")}>
                 <img
                     alt=""
                     src={logo}
@@ -27,7 +26,7 @@ export function TopNavbar(props: Props) {
                     
                 </Nav>
                 <Nav>
-                    <Nav.Link onClick={() => props.redirect("/board")}>O nas</Nav.Link>
+                    <Nav.Link onClick={() => props.redirect("/about")}>O nas</Nav.Link>
                     <Nav.Link onClick={() => props.redirect("/enterprises/projects")}>Umów wizytę</Nav.Link>
                     <Nav.Link onClick={() => props.redirect("/enterprises/projects")}>Zabiegi</Nav.Link>
                     <Nav.Link onClick={() => props.redirect("/enterprises/projects")}>Blog</Nav.Link>

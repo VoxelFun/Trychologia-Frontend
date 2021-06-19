@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { RouteComponentProps, withRouter } from "react-router";
+import ContactView from "./main-page/ContactView";
 import { TopNavbar } from "./TopNavbar";
 
 
@@ -24,6 +25,7 @@ class Layout extends Component<Props, Stats> {
             <div>
                 <TopNavbar redirect={this.props.history.replace}/>
                 {children}
+                <ContactView/>
             </div>
         );
     }

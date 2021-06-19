@@ -1,6 +1,4 @@
 
-export const COMPANY_NAME = "Klinika trychologiczna";
-export const COMPANY_ADDRESS = "22-220 Gliwice";
 
 export const Company = {
     NAME: "Klinika trychologiczna",
@@ -8,3 +6,19 @@ export const Company = {
     PHONE: "+48 921 821 021",
     EMAIL: "klinika@open.mail"
 };
+
+export interface StaffMember {
+    name: string,
+    description: string
+}
+
+export const StaffMembers: StaffMember[] = [
+    {
+        name: "Ewa Mielewska",
+        description: "Swój chłop"
+    },
+    {
+        name: "Pani X",
+        description: "Tożsamość nieznana"
+    },
+];
