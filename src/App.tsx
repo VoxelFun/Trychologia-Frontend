@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-do
 import './App.css';
 import MainPage from './pages/MainPage';
 import AboutPage from './pages/AboutPage';
+import AdminPage from './pages/AdminPage';
+import LoginPage from './pages/LoginPage';
 
 function App() {
     return (
@@ -20,6 +22,18 @@ function App() {
                     exact path="/about"
                     render={() => (
                         <AboutPage/>
+                    )}
+                />
+                <Route
+                    exact path="/admin"
+                    render={() => (
+                        <AdminPage/>
+                    )}
+                />
+                <Route
+                    path="/login"
+                    render={() => (
+                        <LoginPage/>
                     )}
                 />
                 <Redirect from="*" to="/"/>

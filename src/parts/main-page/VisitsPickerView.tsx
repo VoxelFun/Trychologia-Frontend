@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { SectionContainer, SectionHeader } from "./Section";
+import VisitsPicker from "../visit/VisitsPicker";
+import { SectionBody, SectionContainer, SectionHeader } from "./Section";
 
 export default function VisitsPickerView() {
     return (
@@ -11,8 +12,10 @@ export default function VisitsPickerView() {
                 <RightHeader>
                     Cena wizyty: 80zł
                 </RightHeader>
-
             </SectionHeader>
+            <SectionBody>
+                <VisitsPicker admin={false}/>
+            </SectionBody>
         </SectionContainer>
     );
 }
