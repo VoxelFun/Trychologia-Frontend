@@ -2,18 +2,21 @@ import { WeekSchedule } from "../model/WeekSchedule";
 import { UiDaySchedule } from "./UiDaySchedule";
 
 export class UiWeekSchedule {
-    daySchedules: Array<UiDaySchedule | undefined>;
+    id: number;
+    daySchedules: UiDaySchedule[];
 
     constructor(weekSchedule: WeekSchedule) {
+        this.id = weekSchedule.id;
         this.daySchedules = weekSchedule.daySchedules.map(daySchedule => (
-            daySchedule && new UiDaySchedule(daySchedule)
+            new UiDaySchedule(daySchedule)
         ));
     }
 
     toWeekSchedule(): WeekSchedule {
         return {
+            id: this.id,
             daySchedules: this.daySchedules.map(daySchedule => (
-                daySchedule?.toDaySchedule()
+                daySchedule.toDaySchedule()
             ))
         };
     }

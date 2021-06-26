@@ -1,7 +1,8 @@
 import { WeekSchedule } from "./WeekSchedule";
 
 export type StaffMember = {
+    id: number;
     name: string;
     description: string;
-    weekSchedules: WeekSchedule[];
+    weekSchedule: WeekSchedule;
 };

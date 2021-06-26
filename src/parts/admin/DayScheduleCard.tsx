@@ -2,57 +2,53 @@ import { Col, Row } from "react-bootstrap";
 import { Form, InputGroup, FormControl } from "react-bootstrap";
 import { DayLabel } from "../../data/Date";
 import { UiDaySchedule } from "../../library/model-ui/UiDaySchedule";
-import { DummyDaySchedule } from "../../library/model/DaySchedule";
 
 interface Props {
     dayId: number;
-    daySchedule: UiDaySchedule | undefined;
-    setDaySchedule: (daySchedule: UiDaySchedule | undefined) => void;
+    daySchedule: UiDaySchedule;
+    updateDaySchedule: (update: (daySchedule: UiDaySchedule) => void) => void;
 }
 
 export default function DayScheduleCard(props: Props) {
-    console.log(props.dayId, props.daySchedule);
     return (
         <Row>
             <Col>
                 <Form.Check
-                type="switch"
+                    type="switch"
                     id={`${props.dayId}`}
                     label={DayLabel[props.dayId]}
-                    checked={props.daySchedule !== undefined}
-                    onChange={() => props.setDaySchedule(!props.daySchedule ? new UiDaySchedule(DummyDaySchedule) : undefined)}
+                    checked={props.daySchedule.active}
+                    onChange={() => props.updateDaySchedule(daySchedule => daySchedule.active = !daySchedule.active)}
                 />
             </Col>
-            {props.daySchedule && (
-                <Col>
-                    <InputGroup size="sm" className="mb-3">
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="basic-addon1">Od</InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl
-                            value={props.daySchedule.start}
-                            onChange={(e) => props.daySchedule!.start = e.target.value}
-                            placeholder="08:00"
-                            htmlSize={2}
-                        />
-                    </InputGroup>
-                </Col>
-            )} 
-            {props.daySchedule && (
-                <Col>
-                    <InputGroup size="sm" className="mb-3">
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="basic-addon1">Do</InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl
-                            value={props.daySchedule.end}
-                            onChange={(e) => props.daySchedule!.end = e.target.value}
-                            placeholder="16:00"
-                            htmlSize={2}
-                        />
-                    </InputGroup>
-                </Col>
-            )}
+            <Col>
+                <InputGroup size="sm" className="mb-3">
+                    <InputGroup.Prepend>
+                        <InputGroup.Text id="basic-addon1">Od</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl
+                        value={props.daySchedule.start}
+                        onChange={(e) => props.updateDaySchedule(daySchedule => daySchedule.start = e.target.value)}
+                        disabled={!props.daySchedule.active}
+                        placeholder="HH:mm"
+                        htmlSize={2}
+                    />
+                </InputGroup>
+            </Col>
+            <Col>
+                <InputGroup size="sm" className="mb-3">
+                    <InputGroup.Prepend>
+                        <InputGroup.Text id="basic-addon1">Do</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl
+                        value={props.daySchedule.end}
+                        onChange={(e) => props.updateDaySchedule(daySchedule => daySchedule.end = e.target.value)}
+                        disabled={!props.daySchedule.active}
+                        placeholder="HH:mm"
+                        htmlSize={2}
+                    />
+                </InputGroup>
+            </Col>
         </Row>
     );
 }

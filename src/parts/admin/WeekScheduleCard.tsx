@@ -1,16 +1,14 @@
 
 import React, { PureComponent, Component } from "react";
 import { Button, Card, Collapse, Table } from "react-bootstrap";
-import styled from "styled-components";
-import { DayLabel } from "../../data/Date";
+import ApiCall from "../../library/api/ApiCall";
 import { UiDaySchedule } from "../../library/model-ui/UiDaySchedule";
 import { UiWeekSchedule } from "../../library/model-ui/UiWeekSchedule";
-import { DaySchedule } from "../../library/model/DaySchedule";
 import { DummyWeekSchedule, WeekSchedule } from "../../library/model/WeekSchedule";
 import DayScheduleCard from "./DayScheduleCard";
 
 interface Props {
-    
+    weekSchedule: WeekSchedule;
 }
 
 interface State {
@@ -25,7 +23,7 @@ class WeekSchedulerCard extends Component<Props, State> {
 
         this.state = {
             isOpen: true,
-            weekSchedule: new UiWeekSchedule(DummyWeekSchedule)
+            weekSchedule: new UiWeekSchedule(props.weekSchedule)
         };
     }
 
@@ -45,10 +43,10 @@ class WeekSchedulerCard extends Component<Props, State> {
                                 key={i}
                                 dayId={i}
                                 daySchedule={daySchedule}
-                                setDaySchedule={(daySchedule) => this.setDaySchedule(i, daySchedule)}
+                                updateDaySchedule={(update) => this.updateDaySchedule(daySchedule, update)}
                             />
                         ))}
-                        <Button>
+                        <Button onClick={() => this.save()}>
                             Zapisz
                         </Button>
                     </Card.Body>
@@ -61,9 +59,14 @@ class WeekSchedulerCard extends Component<Props, State> {
         this.setState({isOpen: !this.state.isOpen});
     }
 
-    setDaySchedule(dayId: number, daySchedule: UiDaySchedule | undefined) {
+    save() {
         const {weekSchedule} = this.state;
-        weekSchedule.daySchedules[dayId] = daySchedule;
+        new ApiCall().updateWeekSchedule(weekSchedule.toWeekSchedule());
+    }
+
+    updateDaySchedule(daySchedule: UiDaySchedule, update: (daySchedule: UiDaySchedule) => void) {
+        const {weekSchedule} = this.state;
+        update(daySchedule);
         this.setState({weekSchedule: weekSchedule});
     }
 
