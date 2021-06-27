@@ -10,6 +10,7 @@ interface Props {
 
 interface State {
     date: Date;
+    
 }
 
 class VisitsPicker extends PureComponent<Props, State> {
