@@ -1,8 +1,9 @@
 import { BASE_API_URL } from "../../data/Env";
 import { StaffMember } from "../model/StaffMember";
 import { WeekSchedule } from "../model/WeekSchedule";
-import { getGetStaffMemberRoute } from "./GetGetStaffMemberRoute";
+import { getGetStaffMemberRoute } from "./GetStaffMember";
 import { getLogInRoute, LogInRequest, LogInResponse } from "./LogIn";
+import { getSetStaffMemberRoute } from "./SetStaffMember";
 import { getUpdateWeekScheduleRoute, UpdateWeekScheduleResponse } from "./UpdateWeekSchedule";
 
 const RequestMethod = {
@@ -35,6 +36,13 @@ class ApiCall {
     public logOut() {
         return ApiCall.call<{}>("logout", {
             method: RequestMethod.GET
+        });
+    }
+
+    public setStaffMember(staffMember: StaffMember) {
+        return ApiCall.call<{}>(getSetStaffMemberRoute(), {
+            body: staffMember,
+            credentials: Credentials.ENABLED
         });
     }
 
