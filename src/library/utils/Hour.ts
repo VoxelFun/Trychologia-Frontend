@@ -10,6 +10,18 @@ export class Hour {
         return new Hour(values[0] * 60 + values[1]);
     }
 
+    addMinutes(minutes: number) {
+        this.minutes += minutes;
+    }
+
+    isAfter(other: Hour) {
+        return this.minutes > other.minutes;
+    }
+
+    isBefore(other: Hour) {
+        return this.minutes < other.minutes;
+    }
+
     toMinutes() {
         return this.minutes;
     }

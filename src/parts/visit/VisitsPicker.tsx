@@ -1,6 +1,9 @@
 import React, { PureComponent } from "react";
 import { Table } from "react-bootstrap";
 import styled from "styled-components";
+import ApiCall from "../../library/api/ApiCall";
+import { SpotsHolder } from "../../library/model-ui/SpotsHolder";
+import { VisitsScheduler } from "../../library/utils/VisitsScheduler";
 
 const DAYS_AMOUNT = 5;
 
@@ -10,7 +13,8 @@ interface Props {
 
 interface State {
     date: Date;
-    
+    spotsHolders: SpotsHolder[];
+    visitsScheduler: VisitsScheduler | undefined;
 }
 
 class VisitsPicker extends PureComponent<Props, State> {
@@ -19,7 +23,9 @@ class VisitsPicker extends PureComponent<Props, State> {
         super(props);
 
         this.state = {
-            date: new Date()
+            date: new Date(),
+            spotsHolders: [],
+            visitsScheduler: undefined
         };
     }
 

@@ -1,6 +1,8 @@
 import { BASE_API_URL } from "../../data/Env";
+import { SafeStaffMember } from "../model/SafeStaffMember";
 import { StaffMember } from "../model/StaffMember";
 import { WeekSchedule } from "../model/WeekSchedule";
+import { getGetSafeStaffMembersRoute } from "./GetSafeStaffMembers";
 import { getGetStaffMemberRoute } from "./GetStaffMember";
 import { getLogInRoute, LogInRequest, LogInResponse } from "./LogIn";
 import { getSetStaffMemberRoute } from "./SetStaffMember";
@@ -18,6 +20,12 @@ const Credentials = {
 };
 
 class ApiCall {
+
+    public getSafeStaffMembers() {
+        return ApiCall.call<SafeStaffMember[]>(getGetSafeStaffMembersRoute(), {
+            method: RequestMethod.GET
+        });
+    }
 
     public getStaffMember() {
         return ApiCall.call<StaffMember>(getGetStaffMemberRoute(), {
