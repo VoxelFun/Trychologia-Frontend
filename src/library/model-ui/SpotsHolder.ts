@@ -1,7 +1,10 @@
+import { Day } from "../utils/Day";
 import { Spot } from "./Spot";
 
 export class SpotsHolder {
-    constructor(public spots: Spot[]) {
-        
+    public day: Day;
+
+    constructor(dayNumber: number, public spots: Spot[]) {
+        this.day = new Day(dayNumber);
     }
 }

@@ -6,6 +6,7 @@ import MainPage from './pages/MainPage';
 import AboutPage from './pages/AboutPage';
 import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
+import { CustomerPage } from './pages/CustomerPage';
 
 function App() {
     return (
@@ -15,13 +16,17 @@ function App() {
                 <Route
                     exact path="/"
                     render={() => (
-                        <MainPage/>
+                        <CustomerPage>
+                            <MainPage/>
+                        </CustomerPage>
                     )}
                 />
                 <Route
                     exact path="/about"
                     render={() => (
-                        <AboutPage/>
+                        <CustomerPage>
+                            <AboutPage/>
+                        </CustomerPage>
                     )}
                 />
                 <Route
@@ -33,7 +38,9 @@ function App() {
                 <Route
                     path="/login"
                     render={() => (
-                        <LoginPage/>
+                        <CustomerPage>
+                            <LoginPage/>
+                        </CustomerPage>
                     )}
                 />
                 <Redirect from="*" to="/"/>

@@ -10,6 +10,11 @@ export class Hour {
         return new Hour(values[0] * 60 + values[1]);
     }
 
+    static get now(): Hour {
+        const now = new Date();
+        return new Hour(now.getHours() * 60 + now.getMinutes());
+    } 
+
     addMinutes(minutes: number) {
         this.minutes += minutes;
     }

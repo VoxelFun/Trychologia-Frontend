@@ -1,4 +1,6 @@
 import moment from "moment";
+import 'moment/locale/pl';
+import { StringUtils } from "../../utils/StringUtils";
 
 
 export class Day {
@@ -10,8 +12,7 @@ export class Day {
     }
 
     public getWeekday(): number {
-        const start = moment("1970-01-01", "YYYY-MM-DD");
-        return start.add(this.value, "days").day() - 1;
+        return this.toDate().day();
     }
 
     public add(days: number): Day {
@@ -22,6 +23,15 @@ export class Day {
     public subtract(days: number): Day {
         this.value -= days;
         return this;
+    }
+
+    public toDate() {
+        const start = moment("1970-01-01", "YYYY-MM-DD");
+        return start.add(this.value, "days");
+    }
+
+    public toPrettyString() {
+        return StringUtils.upperCaseFirstLetter(this.toDate().format("dddd DD.MM.YYYY"));
     }
 
     static get now(): Day {

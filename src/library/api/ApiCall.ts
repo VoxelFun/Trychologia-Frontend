@@ -2,6 +2,7 @@ import { BASE_API_URL } from "../../data/Env";
 import { SafeStaffMember } from "../model/SafeStaffMember";
 import { StaffMember } from "../model/StaffMember";
 import { WeekSchedule } from "../model/WeekSchedule";
+import { BookVisitRequest, getBookVisitRoute } from "./BookVisit";
 import { getGetSafeStaffMembersRoute } from "./GetSafeStaffMembers";
 import { getGetStaffMemberRoute } from "./GetStaffMember";
 import { getLogInRoute, LogInRequest, LogInResponse } from "./LogIn";
@@ -20,6 +21,12 @@ const Credentials = {
 };
 
 class ApiCall {
+
+    public bookVisit(body: BookVisitRequest) {
+        return ApiCall.call<{}>(getBookVisitRoute(), {
+            body
+        });
+    }
 
     public getSafeStaffMembers() {
         return ApiCall.call<SafeStaffMember[]>(getGetSafeStaffMembersRoute(), {
