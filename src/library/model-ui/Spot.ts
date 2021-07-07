@@ -1,10 +1,18 @@
-import { VisitType } from "../model/Visit";
-import { Hour } from "../utils/Hour";
+import { SpotsHolder } from "./SpotsHolder";
 
 export class Spot {
     public picked: boolean = false;
+    public edited: boolean = false;
 
-    constructor(private start: number, public spotType: SpotType) {
+    public get index() {
+        return this.holder.spots.indexOf(this);
+    }
+
+    public get unpickable() {
+        return this.spotType === SpotType.UNAVAILABLE;
+    }
+
+    constructor(public holder: SpotsHolder, public start: number, public spotType: SpotType) {
         
     }
 
@@ -14,6 +22,19 @@ export class Spot {
         } else {
             return SpotColor[this.spotType];
         }
+    }
+
+    isBefore(spot: Spot) {
+        return this.start < spot.start;
+    }
+
+    sameHolder(spot: Spot) {
+        return this.holder === spot.holder;
+    }
+
+    setType(spotType: SpotType) {
+        this.spotType = spotType;
+        this.edited = true;
     }
 
     togglePicked() {

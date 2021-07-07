@@ -5,7 +5,6 @@ import { Company } from "../../data/Company";
 import ApiCall from "../../library/api/ApiCall";
 import { Customer, CustomerKey, DummyCustomer } from "../../library/model/Customer";
 import { VisitMeta } from "../../library/model/VisitMeta";
-import { VISIT_DURATION } from "../../library/utils/VisitsScheduler";
 
 enum RequestState {
     NOT_INITIALIZED, SAVING, FAIL, SUCCESS
@@ -42,8 +41,7 @@ export function CustomerVisitForm(props: CustomerVisitsProps) {
         try {
             await new ApiCall().bookVisit({
                 ...props.visitMeta,
-                customer,
-                end: props.visitMeta.minutes + VISIT_DURATION
+                customer
             });
             setRequestState(RequestState.SUCCESS);
         } catch {
@@ -72,7 +70,7 @@ export function CustomerVisitForm(props: CustomerVisitsProps) {
                     Pracownik
                 </Form.Label>
                 <Col sm="10">
-                    <Form.Control plaintext readOnly defaultValue={props.staffMemberName} required/>
+                    <Form.Control plaintext readOnly value={props.staffMemberName} required/>
                 </Col>
             </Form.Group>
             <Form.Group as={Row}>
@@ -80,7 +78,7 @@ export function CustomerVisitForm(props: CustomerVisitsProps) {
                     Termin
                 </Form.Label>
                 <Col sm="10">
-                    <Form.Control plaintext readOnly defaultValue={VisitMeta.toPrettyString(props.visitMeta)} required/>
+                    <Form.Control plaintext readOnly value={VisitMeta.toPrettyString(props.visitMeta)} required/>
                 </Col>
             </Form.Group>
             <Form.Group as={Row}>

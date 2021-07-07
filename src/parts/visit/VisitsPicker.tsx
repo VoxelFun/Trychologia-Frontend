@@ -1,55 +1,65 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
+import DatePicker from "react-date-picker";
 import styled from "styled-components";
 import { WaitingOverlay } from "../../components/WaitingOverlay";
+import { VisitInfo } from "../../data/Company";
 import { Spot, SpotType } from "../../library/model-ui/Spot";
 import { SpotsHolder } from "../../library/model-ui/SpotsHolder";
 import { SafeStaffMember } from "../../library/model/SafeStaffMember";
-import { VisitType } from "../../library/model/Visit";
 import { VisitMeta } from "../../library/model/VisitMeta";
 import { Day } from "../../library/utils/Day";
-import { Hour } from "../../library/utils/Hour";
+import { PickVisitData } from "../../library/utils/PickVisitData";
 import { VisitsScheduler } from "../../library/utils/VisitsScheduler";
+import { HashMap } from "../../utils/Delegate";
 
 const DAYS_AMOUNT = 5;
 
 export interface VisitsPickerProps<T extends SafeStaffMember> {
     staffMember: T | undefined;
-    onPickVisit: (visitTime: VisitMeta) => void;
+    onPickVisit: (data: any) => void;
 }
 
 export interface VisitsPickerState {
     date: Date;
+    day: number;
     spotsHolders: SpotsHolder[];
     visitsScheduler: VisitsScheduler | undefined;
 }
 
 abstract class VisitsPicker<TProps extends VisitsPickerProps<SafeStaffMember>, TState extends VisitsPickerState> extends Component<TProps, TState> {
+    protected currentSpot: Spot | undefined;
 
-    getBaseState() {
-        return {
-            date: new Date(),
-            spotsHolders: [],
-            visitsScheduler: undefined,
+    getBaseState(props: TProps) {
+        const date = new Date();
+        const day = Day.fromDate(date).getValue();
+        const visitsScheduler = props.staffMember ? this.getVisitsScheduler(props.staffMember, day) : {
+            VisitsScheduler: undefined,
             spotsHolder: []
+        };
+        return {
+            ...visitsScheduler,
+            date: date,
+            day: day
         } as VisitsPickerState;
     }
 
     componentDidUpdate(prevProps: TProps, prevState: TState) {
         const {staffMember} = this.props;
+        const {day} = this.state;
 
         if(!prevProps.staffMember && staffMember) {
-            const visitsScheduler = new VisitsScheduler(staffMember.weekSchedule);
-            this.setState({
-                visitsScheduler: visitsScheduler,
-                spotsHolders: visitsScheduler.getFreeVisits(Day.now.getValue(), DAYS_AMOUNT)
-            });
+            this.setState(this.getVisitsScheduler(staffMember, day));
         }
     }
 
     render() {
-        const {onPickVisit} = this.props;
-        const {visitsScheduler, spotsHolders} = this.state;
+        const {} = this.props;
+        const {date, visitsScheduler, spotsHolders} = this.state;
+
+        const minDate = new Date();
+        const maxDate = new Date();
+        maxDate.setMonth(maxDate.getMonth() + 6);
 
         if(!visitsScheduler)
             return (
@@ -58,6 +68,14 @@ abstract class VisitsPicker<TProps extends VisitsPickerProps<SafeStaffMember>, T
             
         return (
             <div>
+                <DatePicker
+                    clearIcon={null}
+                    minDate={minDate}
+                    maxDate={maxDate}
+                    showLeadingZeros={true}
+                    value={date}
+                    onChange={this.pickDate.bind(this)}
+                />
                 <Table responsive>
                     <thead>
                         <tr>
@@ -81,19 +99,20 @@ abstract class VisitsPicker<TProps extends VisitsPickerProps<SafeStaffMember>, T
                                         <Cell
                                             key={i + "" +j}
                                             color={spot.getColor()}
-                                            onClick={() => {
-                                                spot.togglePicked();
-                                                onPickVisit({
-                                                    day: spotsHolder.day.getValue(),
-                                                    minutes: Hour.fromText(spotTime).toMinutes(),
-                                                    weekSchedulerId: visitsScheduler.WeekScheduleId
+                                            onClick={(e) => {
+                                                this.pickVisit({
+                                                    visitMeta: {
+                                                        day: spotsHolder.day.getValue(),
+                                                        start: spot.start,
+                                                        end: spot.start + VisitInfo.DURATION,
+                                                        weekSchedulerId: visitsScheduler.WeekScheduleId
+                                                    },
+                                                    spot: spot,
+                                                    key: {
+                                                        ctrl: e.ctrlKey,
+                                                        shift: e.shiftKey
+                                                    }
                                                 });
-                                                console.log({
-                                                    day: spotsHolder.day.getValue(),
-                                                    minutes: Hour.fromText(spotTime).toMinutes(),
-                                                    weekSchedulerId: visitsScheduler.WeekScheduleId
-                                                });
-                                                this.updateState();
                                             }}
                                         >
                                             {spotsHolder.spots[i].spotType}
@@ -108,7 +127,39 @@ abstract class VisitsPicker<TProps extends VisitsPickerProps<SafeStaffMember>, T
         );
     }
 
-    // abstract onPickVisit(): void;
+    getVisitsScheduler(staffMember: SafeStaffMember, day: number) {
+        const visitsScheduler = new VisitsScheduler(staffMember.weekSchedule);
+        return {
+            visitsScheduler: visitsScheduler,
+            spotsHolders: visitsScheduler.getFreeVisits(day, DAYS_AMOUNT)
+        };
+    }
+
+    pickVisit(data: PickVisitData) {
+        const {spot} = data;
+
+        if(spot.unpickable)
+            return;
+
+        this.onPickVisit(data);
+        this.updateState();
+        
+        this.currentSpot = spot;
+    }
+
+    abstract onPickVisit(data: PickVisitData): void;
+
+    pickDate(date: Date) {
+        const {visitsScheduler} = this.state;
+        if(visitsScheduler) {
+            const day = Day.fromDate(date).getValue();
+            this.setState({
+                date: date,
+                day: day,
+                spotsHolders: visitsScheduler.getFreeVisits(day, DAYS_AMOUNT)
+            });
+        }
+    }
 
     updateState() {
         this.setState({...this.state});

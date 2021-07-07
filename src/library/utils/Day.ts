@@ -7,12 +7,18 @@ export class Day {
 
     public constructor(private value: number) {}
 
+    public static fromDate(date: Date) {
+        const start = moment("1970-01-01", "YYYY-MM-DD");
+        const end = moment(date);
+        return new Day(end.diff(start, "days"));
+    }
+
     public getValue(): number {
         return this.value;
     }
 
     public getWeekday(): number {
-        return this.toDate().day();
+        return this.toDate().isoWeekday() - 1;
     }
 
     public add(days: number): Day {
@@ -35,9 +41,8 @@ export class Day {
     }
 
     static get now(): Day {
-        const start = moment("1970-01-01", "YYYY-MM-DD");
-        const today = moment();
-        return new Day(today.diff(start, "days"));
+        const today = new Date();
+        return Day.fromDate(today);
     } 
 
 }

@@ -1,3 +1,4 @@
+import { VisitInfo } from "../../data/Company";
 import { CollectionUtils } from "../../utils/CollectionUtils";
 import { HashMap } from "../../utils/Delegate";
 import { Spot, SpotType } from "../model-ui/Spot";
@@ -8,14 +9,13 @@ import { SafeWeekSchedule } from "../model/SafeWeekSchedule";
 import { Day } from "./Day";
 import { Hour } from "./Hour";
 
-export const VISIT_DURATION = 30;
-
 export class VisitsScheduler {
     public spotsTimes: string[] = [];
 
     private start: number;
     private end: number;
     private visitsHolders: HashMap<number, SafeVisitsHolder>;
+    public spotsHolders: HashMap<number, SpotsHolder>;
 
     public get WeekScheduleId() {
         return this.weekSchedule.id;
@@ -25,6 +25,7 @@ export class VisitsScheduler {
         this.start = CollectionUtils.min(weekSchedule.daySchedules, daySchedule => daySchedule.start);
         this.end = CollectionUtils.max(weekSchedule.daySchedules, daySchedule => daySchedule.end);
         this.visitsHolders = weekSchedule.visitsHolders;
+        this.spotsHolders = {};
     }
 
     public getFreeVisits(dayNumber: number, amount: number) {
@@ -35,31 +36,41 @@ export class VisitsScheduler {
 
         const spotsHolders: SpotsHolder[] = [];
         for(let i = 0; i < amount; i++) {
+            
+            if(this.spotsHolders[day.getValue()]) {
+                spotsHolders.push(this.spotsHolders[day.getValue()]);
+                day.add(1);
+                continue;
+            }
+
             const spots: Spot[] = [];
             const current = new Hour(this.start);
             const times: string[] | undefined = this.spotsTimes.length ? undefined : [];
 
             const visitsHolderParser = new VisitsHolderParser(this.visitsHolders[day.getValue()]);
             const daySchedule = this.weekSchedule.daySchedules[day.getWeekday()];
+            const spotsHolder = new SpotsHolder(day.getValue());
 
             while(current.isBefore(end)) {
                 const time = current.toMinutes();
                 let spotType: SpotType;
 
-                if(dayNow.getValue() > day.getValue() || dayNow.getValue() === day.getValue() && current.isBefore(hourNow) || daySchedule.start > time || daySchedule.end < time){
+
+                if(!daySchedule.active || dayNow.getValue() > day.getValue() || dayNow.getValue() === day.getValue() && current.isBefore(hourNow) || daySchedule.start > time || daySchedule.end < time){
                     spotType = SpotType.UNAVAILABLE;
                 } else {
                     spotType = visitsHolderParser.getSpotType(time);
                 }
 
-                spots.push(new Spot(time, spotType));
+                spots.push(new Spot(spotsHolder, time, spotType));
                 if(times)
                     times.push(current.toText());
-                current.addMinutes(VISIT_DURATION);
+                current.addMinutes(VisitInfo.DURATION);
             }
 
-            const spotsHolder = new SpotsHolder(day.getValue(), spots);
+            spotsHolder.setSpots(spots);
             spotsHolders.push(spotsHolder);
+            this.spotsHolders[day.getValue()] = spotsHolder;
             day.add(1);
 
             if(times)
@@ -90,7 +101,8 @@ class VisitsHolderParser {
             this.read();
             return this.getSpotType(minutes);
         }
-        return SpotType.UNAVAILABLE;
+        //@ts-ignore
+        return this.visit.type || SpotType.UNAVAILABLE;
     }
 
     private read() {

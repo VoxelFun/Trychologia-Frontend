@@ -6,6 +6,7 @@ import { BookVisitRequest, getBookVisitRoute } from "./BookVisit";
 import { getGetSafeStaffMembersRoute } from "./GetSafeStaffMembers";
 import { getGetStaffMemberRoute } from "./GetStaffMember";
 import { getLogInRoute, LogInRequest, LogInResponse } from "./LogIn";
+import { getSaveVisitsRoute, SaveVisitsRequest } from "./SaveVisits";
 import { getSetStaffMemberRoute } from "./SetStaffMember";
 import { getUpdateWeekScheduleRoute, UpdateWeekScheduleResponse } from "./UpdateWeekSchedule";
 
@@ -51,6 +52,13 @@ class ApiCall {
     public logOut() {
         return ApiCall.call<{}>("logout", {
             method: RequestMethod.GET
+        });
+    }
+
+    public saveVisits(body: SaveVisitsRequest) {
+        return ApiCall.call<{}>(getSaveVisitsRoute(), {
+            body,
+            credentials: Credentials.ENABLED
         });
     }
 

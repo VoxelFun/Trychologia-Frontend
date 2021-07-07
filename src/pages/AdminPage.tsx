@@ -6,6 +6,7 @@ import { WaitingOverlay } from "../components/WaitingOverlay";
 import ApiCall from "../library/api/ApiCall";
 import { StaffMember } from "../library/model/StaffMember";
 import StaffMemberCard from "../parts/admin/StaffMemberCard";
+import VisitsScheduleCard from "../parts/admin/VisitsScheduleCard";
 import WeekSchedulerCard from "../parts/admin/WeekScheduleCard";
 
 interface Props extends RouteComponentProps<any> {
@@ -45,6 +46,10 @@ class AdminPage extends PureComponent<Props, State> {
 
         return (
             <Container>
+                <VisitsScheduleCard
+                    staffMember={staffMember}
+                    saveVisits={() => this.saveVisits()}
+                />
                 <StaffMemberCard
                     staffMember={staffMember}
                     updateStaffMember={this.updateStaffMember.bind(this)}
@@ -70,6 +75,10 @@ class AdminPage extends PureComponent<Props, State> {
             update(result);
             this.setState({staffMember: result});
         }
+    }
+
+    saveVisits() {
+
     }
 
     async wait(task: Promise<void>): Promise<void> {

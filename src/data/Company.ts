@@ -1,3 +1,4 @@
+import { VisitType } from "../library/model/Visit";
 
 
 export const Company = {
@@ -7,10 +8,21 @@ export const Company = {
     EMAIL: "klinika@open.mail"
 };
 
+export const VisitTypeLabel = {
+    [VisitType.FREE]: "Wolna",
+    [VisitType.CUSTOMER]: "Klient",
+    [VisitType.TREATMENT]: "Zabieg",
+    [VisitType.VACATION]: "Urlop",
+};
+
 export interface StaffMember {
     name: string,
     description: string
 }
+
+export const VisitInfo = {
+    DURATION: 30
+};
 
 export const StaffMembers: StaffMember[] = [
     {

@@ -8,7 +8,7 @@ export type Visit = SafeVisit & {
 };
 
 export enum VisitType {
-    FREE, CUSTOMER
+    FREE, CUSTOMER, TREATMENT, VACATION
 }
 
 // export const VisitType1 = {
