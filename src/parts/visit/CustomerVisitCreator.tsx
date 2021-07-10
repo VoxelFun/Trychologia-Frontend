@@ -11,7 +11,7 @@ interface Props {
 export function CustomerVisitCreator(props: Props) {
     return (
         <div>
-            <Row className="align-items-center">
+            <Row className="align-items-center" id="form">
                 <Col md={4}>
                     <Title>
                         Jak przebiega wizyta?

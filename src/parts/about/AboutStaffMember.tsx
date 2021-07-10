@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import {Card, Image, Button} from "react-bootstrap";
-import { StaffMember } from "../../data/Company";
+import { SafeStaffMember } from "../../library/model/SafeStaffMember";
 
 interface Props {
-    staffMember: StaffMember;
+    staffMember: SafeStaffMember;
 }
 
 export default function AboutStaffMember(props: Props) {

@@ -11,6 +11,13 @@ export default function VisitsPickerView() {
     const [visitMeta, setVisitMeta] = useState<VisitMeta | undefined>(undefined);
     const staffMember = customerContext.state.safeStaffMembers?.[0];
 
+    function onPickVisit(visitMeta: VisitMeta) {
+        setVisitMeta(visitMeta);
+        // document.getElementById('form')!.scrollIntoView({
+        //     behavior: 'smooth'
+        // });
+    }
+
     return (
         <SectionContainer>
             <SectionHeader>
@@ -24,7 +31,7 @@ export default function VisitsPickerView() {
             <SectionBody>
                 <CustomerVisitsPicker
                     staffMember={staffMember}
-                    onPickVisit={setVisitMeta}
+                    onPickVisit={onPickVisit}
                 />
                 {staffMember && visitMeta && (
                     <CustomerVisitCreator

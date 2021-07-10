@@ -1,7 +1,7 @@
 import { Navbar, Nav } from "react-bootstrap";
 import { Company } from "../data/Company";
 import { PageHook } from "../library/PageHook";
-import logo from "../logo.svg";
+import logo from "../assets/logo.svg";
 
 interface Props {
     redirect: (path: string) => void;
@@ -14,9 +14,10 @@ export function TopNavbar(props: Props) {
                 <img
                     alt=""
                     src={logo}
-                    width="30"
-                    height="30"
+                    width="128"
+                    height="128"
                     className="d-inline-block align-top"
+                    style={{position: "relative"}}
                 />{' '}
                 {Company.NAME}
             </Navbar.Brand>
@@ -27,7 +28,7 @@ export function TopNavbar(props: Props) {
                 </Nav>
                 <Nav>
                     <Nav.Link onClick={() => props.redirect("/about")}>O nas</Nav.Link>
-                    <Nav.Link onClick={() => props.redirect("/enterprises/projects")}>Umów wizytę</Nav.Link>
+                    <Nav.Link onClick={() => props.redirect("/visit")}>Umów wizytę</Nav.Link>
                     <Nav.Link onClick={() => props.redirect("/enterprises/projects")}>Zabiegi</Nav.Link>
                     <Nav.Link onClick={() => props.redirect("/enterprises/projects")}>Blog</Nav.Link>
                     <Nav.Link href={`/#${PageHook.Contact}`}>Kontakt</Nav.Link>

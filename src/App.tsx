@@ -7,6 +7,7 @@ import AboutPage from './pages/AboutPage';
 import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
 import { CustomerPage } from './pages/CustomerPage';
+import VisitPage from './pages/VisitPage';
 
 function App() {
     return (
@@ -40,6 +41,14 @@ function App() {
                     render={() => (
                         <CustomerPage>
                             <LoginPage/>
+                        </CustomerPage>
+                    )}
+                />
+                <Route
+                    exact path="/visit"
+                    render={() => (
+                        <CustomerPage>
+                            <VisitPage/>
                         </CustomerPage>
                     )}
                 />
