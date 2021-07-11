@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import styled from "styled-components";
 import { CustomerContext } from "../../contexts/CustomerContext";
 import { VisitMeta } from "../../library/model/VisitMeta";
+import { Card } from "../styled/Card";
 import { CustomerVisitCreator } from "../visit/CustomerVisitCreator";
 import CustomerVisitsPicker from "../visit/CustomerVisitsPicker";
 import { SectionBody, SectionContainer, SectionHeader } from "./Section";
@@ -24,15 +25,19 @@ export default function VisitsPickerView() {
                 <LeftHeader>
                     Umów wizytę
                 </LeftHeader>
-                <RightHeader>
-                    Cena wizyty: 80zł
-                </RightHeader>
             </SectionHeader>
             <SectionBody>
-                <CustomerVisitsPicker
-                    staffMember={staffMember}
-                    onPickVisit={onPickVisit}
-                />
+                <Card.Container>
+                    <Card.Body>
+                        <CustomerVisitsPicker
+                            staffMember={staffMember}
+                            onPickVisit={onPickVisit}
+                        />
+                    </Card.Body>
+                    <Card.Footer>
+                        Cena wizyty: 80zł
+                    </Card.Footer>
+                </Card.Container>
                 {staffMember && visitMeta && (
                     <CustomerVisitCreator
                         staffMemberName={staffMember.name}

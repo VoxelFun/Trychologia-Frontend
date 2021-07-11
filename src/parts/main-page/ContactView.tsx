@@ -15,7 +15,7 @@ export default function ContactView() {
                     <p>e-mail: {Company.EMAIL}</p>
                     <p>
                         Godziny otwarcia:<br/>
-                        Pon-Pt 8:00-18:00
+                        Pn-Pt 8:00-18:00
                     </p>
                     <div>
                         <FacebookOutlined style={{fontSize: 32}}/>

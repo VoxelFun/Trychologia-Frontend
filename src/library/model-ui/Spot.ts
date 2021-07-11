@@ -1,3 +1,4 @@
+import { Theme } from "../../data/Theme";
 import { SpotsHolder } from "./SpotsHolder";
 
 export class Spot {
@@ -47,8 +48,8 @@ export enum SpotType {
 }
 
 const SpotColor = {
-    PICKED: "orange",
-    [SpotType.UNAVAILABLE]: "red",
-    [SpotType.FREE]: "green",
+    PICKED: Theme.accent,
+    [SpotType.UNAVAILABLE]: Theme.grey,
+    [SpotType.FREE]: Theme.primary,
     [SpotType.CUSTOMER]: "blue",
 };

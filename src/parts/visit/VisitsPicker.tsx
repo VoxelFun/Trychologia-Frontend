@@ -1,5 +1,6 @@
+import { CloseOutlined, PlusOutlined } from "@ant-design/icons";
 import React, { Component } from "react";
-import { Table } from "react-bootstrap";
+// import { Table } from "react-bootstrap";
 import DatePicker from "react-date-picker";
 import styled from "styled-components";
 import { WaitingOverlay } from "../../components/WaitingOverlay";
@@ -68,60 +69,70 @@ abstract class VisitsPicker<TProps extends VisitsPickerProps<SafeStaffMember>, T
             
         return (
             <div>
-                <DatePicker
-                    clearIcon={null}
-                    minDate={minDate}
-                    maxDate={maxDate}
-                    showLeadingZeros={true}
-                    value={date}
-                    onChange={this.pickDate.bind(this)}
-                />
-                <Table responsive>
-                    <thead>
-                        <tr>
-                            <td>
+                <DatePickerContainer>
+                    Wybierz dzień:{" "}
+                    <DatePicker
+                        clearIcon={null}
+                        minDate={minDate}
+                        maxDate={maxDate}
+                        showLeadingZeros={true}
+                        value={date}
+                        onChange={this.pickDate.bind(this)}
+                    />
+                </DatePickerContainer>
+                <Table>
+                    <Header>
+                        <Cell>
 
-                            </td>
-                            {spotsHolders.map((spotsHolder, i) => (
-                                <th key={i}>{spotsHolder.day.toPrettyString()}</th>
-                            ))}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {visitsScheduler.spotsTimes.map((spotTime, i) => (
-                            <tr key={i}>
-                                <td>
-                                    {spotTime}
-                                </td>
-                                {spotsHolders.map((spotsHolder, j) => {
-                                    const spot = spotsHolder.spots[i];
-                                    return (
-                                        <Cell
-                                            key={i + "" +j}
-                                            color={spot.getColor()}
-                                            onClick={(e) => {
-                                                this.pickVisit({
-                                                    visitMeta: {
-                                                        day: spotsHolder.day.getValue(),
-                                                        start: spot.start,
-                                                        end: spot.start + VisitInfo.DURATION,
-                                                        weekSchedulerId: visitsScheduler.WeekScheduleId
-                                                    },
-                                                    spot: spot,
-                                                    key: {
-                                                        ctrl: e.ctrlKey,
-                                                        shift: e.shiftKey
-                                                    }
-                                                });
-                                            }}
-                                        >
-                                            {spotsHolder.spots[i].spotType}
-                                        </Cell>
-                                    );
-                                })}
-                            </tr>
+                        </Cell>
+                        {spotsHolders.map((spotsHolder, i) => (
+                            <Cell key={i}>
+                                <WeekDayName>{spotsHolder.day.toWeekDayName()}</WeekDayName>
+                                <MonthDay>{spotsHolder.day.toMonthDay()}</MonthDay>
+                            </Cell>
                         ))}
-                    </tbody>
+                    </Header>
+                    {visitsScheduler.spotsTimes.map((spotTime, i) => (
+                        <Row key={i}>
+                            <TimeCell>
+                                <TimeCellContent>
+                                    {spotTime}
+                                </TimeCellContent>
+                            </TimeCell>
+                            {spotsHolders.map((spotsHolder, j) => {
+                                const spot = spotsHolder.spots[i];
+                                return (
+                                    <Cell
+                                        key={i + "" +j}
+                                        color={spot.getColor()}
+                                        onClick={(e) => {
+                                            this.pickVisit({
+                                                visitMeta: {
+                                                    day: spotsHolder.day.getValue(),
+                                                    start: spot.start,
+                                                    end: spot.start + VisitInfo.DURATION,
+                                                    weekSchedulerId: visitsScheduler.WeekScheduleId
+                                                },
+                                                spot: spot,
+                                                key: {
+                                                    ctrl: e.ctrlKey,
+                                                    shift: e.shiftKey
+                                                }
+                                            });
+                                        }}
+                                    >
+                                        <CellContent>
+                                        {spotsHolder.spots[i].spotType >= 0 ? (
+                                            <PlusOutlined/>
+                                        ) : (
+                                            <CloseOutlined/>
+                                        )}
+                                        </CellContent>
+                                    </Cell>
+                                );
+                            })}
+                        </Row>
+                    ))}
                 </Table>
             </div>
         );
@@ -169,13 +180,62 @@ abstract class VisitsPicker<TProps extends VisitsPickerProps<SafeStaffMember>, T
 
 export default (VisitsPicker);
 
-const Header = styled.div`
-    background-color: #658cdf;
-    
+const DatePickerContainer = styled.div`
+    font-weight: bold;
+    margin-bottom: 1rem;
 `;
 
 const Cell = styled.td`
     width: 3rem;
     height: 3rem;
     background-color: ${props => props.color};
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    
+`;
+
+const CellContent = styled.div`
+    vertical-align: -0.35rem;
+    display: inline;
+`;
+
+const Table = styled.div`
+    text-align: center;
+    overflow: auto;
+    width: 18rem;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+`;
+
+const Row = styled.div`
+    display: flex;
+`;
+
+const Header = styled(Row)`
+    
+    
+`;
+
+const WeekDayName = styled.div`
+    font-weight: bold;
+`;
+
+const MonthDay = styled.div`
+    font-size: .8rem;
+`;
+
+const Column = styled.div`
+
+`;
+
+const TimeCell = styled(Cell)`
+    
+`;
+
+const TimeCellContent = styled(CellContent)`
+    vertical-align: -0.5rem;
+`;
+
+const SpotCell = styled(Cell)`
+
 `;

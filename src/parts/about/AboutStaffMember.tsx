@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import {Card, Image, Button} from "react-bootstrap";
+import {Image, Button} from "react-bootstrap";
 import { SafeStaffMember } from "../../library/model/SafeStaffMember";
+import { Card } from "../styled/Card";
 
 interface Props {
     staffMember: SafeStaffMember;
@@ -9,20 +10,20 @@ interface Props {
 export default function AboutStaffMember(props: Props) {
     const {staffMember} = props;
     return (
-        <Card>
-            <Card.Img variant="top"/>
+        <Card.Container>
+            {/* <Card.Img variant="top"/> */}
+            <Card.Header>
+                {staffMember.name}
+            </Card.Header>
             <Card.Body>
-                <Card.Title>{staffMember.name}</Card.Title>
-                <Card.Text>
-                    {staffMember.description}
-                </Card.Text>
+                {staffMember.description}
             </Card.Body>
             <Card.Footer>
                 <Button>
                     Umów wizytę
                 </Button>
             </Card.Footer>
-        </Card>
+        </Card.Container>
         // <Card>
         //     <Row>
         //         <Col>

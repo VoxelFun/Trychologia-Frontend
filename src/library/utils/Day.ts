@@ -36,8 +36,12 @@ export class Day {
         return start.add(this.value, "days");
     }
 
-    public toPrettyString() {
-        return StringUtils.upperCaseFirstLetter(this.toDate().format("dddd DD.MM.YYYY"));
+    public toMonthDay() {
+        return this.toDate().format("DD.MM");
+    }
+
+    public toWeekDayName() {
+        return this.toDate().format("dd");
     }
 
     static get now(): Day {

@@ -1,34 +1,31 @@
 import { useState } from "react";
 import { Comments } from "../../data/Comment";
 import RandomUtils from "../../utils/RandomUtils";
-import { Card, CardDeck } from "react-bootstrap";
-import { SectionContainer, SectionHeader } from "./Section";
+import { Card, CardsContainer } from "../styled/Card";
+import { SectionBody, SectionContainer, SectionHeader } from "./Section";
 
 export default function CommentsView() {
     const [comments, _] = useState(RandomUtils.getNumbersArray(0, Comments.length, 3).map(id => Comments[id]));
 
     return (
-        <SectionContainer>
+        <SectionContainer odd>
             <SectionHeader>
                 Opinie
             </SectionHeader>
-            <div>
-                <CardDeck>
+            <SectionBody>
+                <CardsContainer xs={1} lg={3}>
                     {comments.map((comment, i) => (
-                        <Card key={i}>
+                        <Card.Container key={i}>
                             <Card.Body>
-                                <Card.Title>{comment.title}</Card.Title>
-                                <Card.Text>
-                                    {comment.text}
-                                </Card.Text>
+                                {comment.text}
                             </Card.Body>
                             <Card.Footer>
                                 <small className="text-muted">{comment.author}</small>
                             </Card.Footer>
-                        </Card>
+                        </Card.Container>
                     ))}
-                </CardDeck>
-            </div>
+                </CardsContainer>
+            </SectionBody>
         </SectionContainer>
     );
 }
