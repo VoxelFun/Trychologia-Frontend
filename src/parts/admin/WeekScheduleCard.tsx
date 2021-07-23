@@ -22,7 +22,7 @@ class WeekSchedulerCard extends Component<Props, State> {
         super(props);
 
         this.state = {
-            isOpen: true,
+            isOpen: false,
             weekSchedule: new UiWeekSchedule(props.weekSchedule)
         };
     }

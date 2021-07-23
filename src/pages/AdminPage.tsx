@@ -6,6 +6,7 @@ import { WaitingOverlay } from "../components/WaitingOverlay";
 import ApiCall from "../library/api/ApiCall";
 import { StaffMember } from "../library/model/StaffMember";
 import StaffMemberCard from "../parts/admin/StaffMemberCard";
+import VisitsListCard from "../parts/admin/VisitsListCard";
 import VisitsScheduleCard from "../parts/admin/VisitsScheduleCard";
 import WeekSchedulerCard from "../parts/admin/WeekScheduleCard";
 
@@ -46,6 +47,9 @@ class AdminPage extends PureComponent<Props, State> {
 
         return (
             <Container>
+                <VisitsListCard
+                    visitsHolders={staffMember.weekSchedule.visitsHolders}
+                />
                 <VisitsScheduleCard
                     staffMember={staffMember}
                     saveVisits={() => this.saveVisits()}

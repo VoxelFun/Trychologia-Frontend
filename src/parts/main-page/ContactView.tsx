@@ -10,7 +10,8 @@ export default function ContactView() {
             <Row>
                 <Col>
                     <p>{Company.NAME}</p>
-                    <p>{Company.ADDRESS}</p>
+                    <div>{Company.ADDRESS}</div>
+                    <p>Gabinet Sztuk Pięknych</p>
                     <p>tel: {Company.PHONE}</p>
                     <p>e-mail: {Company.EMAIL}</p>
                     <p>
@@ -24,7 +25,7 @@ export default function ContactView() {
                 </Col>
                 <Col>
                 {/*@ts-ignore8*/}
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d163104.36044872314!2d18.509533735982835!3d50.301155489590606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471130606c66b15f%3A0x9bbca89f06cbea11!2sGliwice%2C%20Polska!5e0!3m2!1spl!2sde!4v1623874744260!5m2!1spl!2sde" style={{border: 0, width: "100%", height: "100%"}} allowFullScreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2548.683604979627!2d18.670141015725868!3d50.297833679454634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471130567971af3d%3A0x79a0c4188e6fcbad!2sGabinet%20Sztuk%20Pi%C4%99knych!5e0!3m2!1spl!2sde!4v1626901514474!5m2!1spl!2sde" style={{border: 0, width: "100%", height: "100%"}} allowFullScreen="" loading="lazy"></iframe>
                 </Col>
             </Row>
         </Container>

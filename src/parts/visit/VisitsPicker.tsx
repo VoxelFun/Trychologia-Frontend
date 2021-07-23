@@ -68,7 +68,7 @@ abstract class VisitsPicker<TProps extends VisitsPickerProps<SafeStaffMember>, T
             );
             
         return (
-            <div>
+            <div style={{textAlign: "center"}}>
                 <DatePickerContainer>
                     Wybierz dzień:{" "}
                     <DatePicker
@@ -80,60 +80,58 @@ abstract class VisitsPicker<TProps extends VisitsPickerProps<SafeStaffMember>, T
                         onChange={this.pickDate.bind(this)}
                     />
                 </DatePickerContainer>
-                <Table>
-                    <Header>
-                        <Cell>
-
-                        </Cell>
-                        {spotsHolders.map((spotsHolder, i) => (
-                            <Cell key={i}>
-                                <WeekDayName>{spotsHolder.day.toWeekDayName()}</WeekDayName>
-                                <MonthDay>{spotsHolder.day.toMonthDay()}</MonthDay>
-                            </Cell>
-                        ))}
-                    </Header>
-                    {visitsScheduler.spotsTimes.map((spotTime, i) => (
-                        <Row key={i}>
-                            <TimeCell>
-                                <TimeCellContent>
-                                    {spotTime}
-                                </TimeCellContent>
-                            </TimeCell>
-                            {spotsHolders.map((spotsHolder, j) => {
-                                const spot = spotsHolder.spots[i];
-                                return (
-                                    <Cell
-                                        key={i + "" +j}
-                                        color={spot.getColor()}
-                                        onClick={(e) => {
-                                            this.pickVisit({
-                                                visitMeta: {
-                                                    day: spotsHolder.day.getValue(),
-                                                    start: spot.start,
-                                                    end: spot.start + VisitInfo.DURATION,
-                                                    weekSchedulerId: visitsScheduler.WeekScheduleId
-                                                },
-                                                spot: spot,
-                                                key: {
-                                                    ctrl: e.ctrlKey,
-                                                    shift: e.shiftKey
-                                                }
-                                            });
-                                        }}
-                                    >
-                                        <CellContent>
-                                        {spotsHolder.spots[i].spotType >= 0 ? (
-                                            <PlusOutlined/>
-                                        ) : (
-                                            <CloseOutlined/>
-                                        )}
-                                        </CellContent>
-                                    </Cell>
-                                );
-                            })}
+                <TableContainer>
+                    <Table>
+                        <Row>
+                            <EmptyCell/>
+                            {spotsHolders.map((spotsHolder, i) => (
+                                <DateCell key={i}>
+                                    <WeekDayName>{spotsHolder.day.toWeekDayName()}</WeekDayName>
+                                    <MonthDay>{spotsHolder.day.toMonthDay()}</MonthDay>
+                                </DateCell>
+                            ))}
                         </Row>
-                    ))}
-                </Table>
+                        {visitsScheduler.spotsTimes.map((spotTime, i) => (
+                            <Row key={i}>
+                                <TimeCell>
+                                    {spotTime}
+                                </TimeCell>
+                                {spotsHolders.map((spotsHolder, j) => {
+                                    const spot = spotsHolder.spots[i];
+                                    return (
+                                        <Cell
+                                            key={i + "" +j}
+                                            color={spot.getColor()}
+                                            onClick={(e) => {
+                                                this.pickVisit({
+                                                    visitMeta: {
+                                                        day: spotsHolder.day.getValue(),
+                                                        start: spot.start,
+                                                        end: spot.start + VisitInfo.DURATION,
+                                                        weekSchedulerId: visitsScheduler.WeekScheduleId
+                                                    },
+                                                    spot: spot,
+                                                    key: {
+                                                        ctrl: e.ctrlKey,
+                                                        shift: e.shiftKey
+                                                    }
+                                                });
+                                            }}
+                                        >
+                                            <CellContent>
+                                            {spotsHolder.spots[i].spotType >= 0 ? (
+                                                <PlusOutlined/>
+                                            ) : (
+                                                <CloseOutlined/>
+                                            )}
+                                            </CellContent>
+                                        </Cell>
+                                    );
+                                })}
+                            </Row>
+                        ))}
+                    </Table>
+                </TableContainer>
             </div>
         );
     }
@@ -186,33 +184,30 @@ const DatePickerContainer = styled.div`
 `;
 
 const Cell = styled.td`
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
     background-color: ${props => props.color};
     border-bottom: 1px solid black;
     border-right: 1px solid black;
-    
 `;
 
 const CellContent = styled.div`
-    vertical-align: -0.35rem;
     display: inline;
+    vertical-align: 0.5rem;
 `;
 
-const Table = styled.div`
-    text-align: center;
-    overflow: auto;
-    width: 18rem;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
+const TableContainer = styled.div`
+    max-height: 80vh;
+    overflow-y: auto;
+    display: inline-block;
 `;
 
-const Row = styled.div`
-    display: flex;
+const Table = styled.table`
+    border-collapse: separate;
+    border-spacing: 0;
 `;
 
-const Header = styled(Row)`
-    
+const Row = styled.tr`
     
 `;
 
@@ -224,18 +219,27 @@ const MonthDay = styled.div`
     font-size: .8rem;
 `;
 
-const Column = styled.div`
-
+const HeaderCell = styled(Cell)`
+    position: -webkit-sticky;
+    position: sticky;
+    background-color: white;
 `;
 
-const TimeCell = styled(Cell)`
-    
+const TimeCell = styled(HeaderCell)`
+    left: 0;
+    border-left: 1px solid black;
 `;
 
-const TimeCellContent = styled(CellContent)`
-    vertical-align: -0.5rem;
+const DateCell = styled(HeaderCell)`
+    top: 0;
+    border-top: 1px solid black;
 `;
 
-const SpotCell = styled(Cell)`
 
+const EmptyCell = styled(HeaderCell)`
+    top: 0;
+    left: 0;
+    z-index: 2;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
 `;

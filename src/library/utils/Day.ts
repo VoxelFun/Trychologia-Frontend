@@ -44,6 +44,10 @@ export class Day {
         return this.toDate().format("dd");
     }
 
+    public toText() {
+        return this.toDate().format("dddd DD.MM.YYYY");
+    }
+
     static get now(): Day {
         const today = new Date();
         return Day.fromDate(today);

@@ -19,7 +19,7 @@ class StaffMemberCard extends Component<Props, State> {
         super(props);
 
         this.state = {
-            isOpen: true
+            isOpen: false
         };
     }
 

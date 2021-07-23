@@ -27,7 +27,7 @@ class VisitsScheduleCard extends Component<Props, State> {
         super(props);
 
         this.state = {
-            isOpen: true
+            isOpen: false
         };
     }
 
@@ -38,7 +38,7 @@ class VisitsScheduleCard extends Component<Props, State> {
         return (
             <Card>
                 <Card.Header onClick={() => this.toggleIsOpen()}>
-                    Wizyty
+                    Kalendarz
                 </Card.Header>
                 <Collapse in={isOpen}>
                     <Card.Body>

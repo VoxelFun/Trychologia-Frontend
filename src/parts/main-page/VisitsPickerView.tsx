@@ -14,9 +14,9 @@ export default function VisitsPickerView() {
 
     function onPickVisit(visitMeta: VisitMeta) {
         setVisitMeta(visitMeta);
-        // document.getElementById('form')!.scrollIntoView({
-        //     behavior: 'smooth'
-        // });
+        document.getElementById('form')!.scrollIntoView({
+            behavior: 'smooth'
+        });
     }
 
     return (
@@ -38,6 +38,7 @@ export default function VisitsPickerView() {
                         Cena wizyty: 80zł
                     </Card.Footer>
                 </Card.Container>
+                <div id="form"/>
                 {staffMember && visitMeta && (
                     <CustomerVisitCreator
                         staffMemberName={staffMember.name}

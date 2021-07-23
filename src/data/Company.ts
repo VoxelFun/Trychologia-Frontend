@@ -3,8 +3,8 @@ import { VisitType } from "../library/model/Visit";
 
 export const Company = {
     NAME: "TrychoMedical",
-    ADDRESS: "22-220 Gliwice, ul. Swojska 23/12",
-    PHONE: "+48 921 821 021",
+    ADDRESS: "Norberta Barlickiego 11/I, 44-100 Gliwice",
+    PHONE: "+48 533 519 305",
     EMAIL: "klinika@open.mail"
 };
 

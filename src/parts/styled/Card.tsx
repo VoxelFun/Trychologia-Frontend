@@ -46,6 +46,8 @@ export const Card = {
     Header: styled.div`
         margin-bottom: .75rem;
         font-size: 1.25rem;
+        font-weight: bold;
+        color: ${props => props.theme.accent};
     `,
     Body: styled.div`
         
@@ -53,5 +55,6 @@ export const Card = {
     Footer: styled.div`
         display: table-row;
         vertical-align: bottom;
+        margin-top: .75rem;
     `,
 };

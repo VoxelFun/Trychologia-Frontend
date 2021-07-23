@@ -18,12 +18,13 @@ export const SectionContainer = styled.div<SectionContainerProps>`
     }
 `;
 
-export const SectionHeader = styled.h5`
+export const SectionHeader = styled.p`
     font-weight: bold;
+    font-size: 3em;
 `;
 
 export const SectionBody = styled.div`
-    padding: 4em 2em;
+    /* padding: 4em 2em;
 
     @media (max-width: ${ScreenSize.lg}) {
         padding: 2em 1em;
@@ -31,5 +32,5 @@ export const SectionBody = styled.div`
 
     @media (max-width: ${ScreenSize.md}) {
         padding: 1em 0.5em;
-    }
+    } */
 `;
