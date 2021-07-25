@@ -33,31 +33,33 @@ class StaffMemberCard extends Component<Props, State> {
                     O mnie
                 </Card.Header>
                 <Collapse in={isOpen}>
-                    <Card.Body>
-                        <Form>
-                            <Form.Group>
-                                <Form.Label>Imię i nazwisko</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    value={staffMember.name}
-                                    onChange={e => updateStaffMember(staffMember => staffMember.name = e.target.value)}
-                                />
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Opis</Form.Label>
-                                
-                                <Form.Control
-                                    as="textarea"
-                                    value={staffMember.description}
-                                    onChange={e => updateStaffMember(staffMember => staffMember.description = e.target.value)}
-                                    rows={3}
-                                />
-                            </Form.Group>
-                            <Button onClick={() => this.save()}>
-                                Zapisz
-                            </Button>
-                        </Form>
-                    </Card.Body>
+                    <div>
+                        <Card.Body>
+                            <Form>
+                                <Form.Group>
+                                    <Form.Label>Imię i nazwisko</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        value={staffMember.name}
+                                        onChange={e => updateStaffMember(staffMember => staffMember.name = e.target.value)}
+                                    />
+                                </Form.Group>
+                                <Form.Group>
+                                    <Form.Label>Opis</Form.Label>
+                                    
+                                    <Form.Control
+                                        as="textarea"
+                                        value={staffMember.description}
+                                        onChange={e => updateStaffMember(staffMember => staffMember.description = e.target.value)}
+                                        rows={3}
+                                    />
+                                </Form.Group>
+                                <Button onClick={() => this.save()}>
+                                    Zapisz
+                                </Button>
+                            </Form>
+                        </Card.Body>
+                    </div>
                 </Collapse>
             </Card>
         );

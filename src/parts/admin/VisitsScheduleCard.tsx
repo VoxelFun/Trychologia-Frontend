@@ -41,15 +41,17 @@ class VisitsScheduleCard extends Component<Props, State> {
                     Kalendarz
                 </Card.Header>
                 <Collapse in={isOpen}>
-                    <Card.Body>
-                        <AdminVisitsPicker
-                            staffMember={staffMember}
-                            onPickVisit={(spotsHolders: HashMap<number, SpotsHolder>) => this.spotsHolders = spotsHolders}
-                        />
-                        <Button onClick={() => this.save()}>
-                            Zapisz
-                        </Button>
-                    </Card.Body>
+                    <div>
+                        <Card.Body>
+                            <AdminVisitsPicker
+                                staffMember={staffMember}
+                                onPickVisit={(spotsHolders: HashMap<number, SpotsHolder>) => this.spotsHolders = spotsHolders}
+                            />
+                            <Button onClick={() => this.save()}>
+                                Zapisz
+                            </Button>
+                        </Card.Body>
+                    </div>
                 </Collapse>
             </Card>
         );

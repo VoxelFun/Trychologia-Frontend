@@ -38,25 +38,27 @@ class VisitsListCard extends Component<Props, State> {
                     Wizyty
                 </Card.Header>
                 <Collapse in={isOpen}>
-                    <Card.Body>
-                        <Content>
-                            <ListGroup>
-                                {Object.keys(visitsHolders).map((dayId: string) => {
-                                    const visitHolder = visitsHolders[parseInt(dayId)];
-                                    return (
-                                        <>
-                                            <ListGroup.Item variant="secondary">
-                                                {new Day(parseInt(dayId)).toText()}
-                                            </ListGroup.Item>
-                                            {visitHolder.visits.map(visit => (
-                                                <VisitView visit={visit}/>
-                                            ))}
-                                        </>
-                                    );
-                                })}
-                            </ListGroup>
-                        </Content>
-                    </Card.Body>
+                    <div>
+                        <Card.Body>
+                            <Content>
+                                <ListGroup>
+                                    {Object.keys(visitsHolders).map((dayId: string) => {
+                                        const visitHolder = visitsHolders[parseInt(dayId)];
+                                        return (
+                                            <>
+                                                <ListGroup.Item variant="secondary">
+                                                    {new Day(parseInt(dayId)).toText()}
+                                                </ListGroup.Item>
+                                                {visitHolder.visits.map(visit => (
+                                                    <VisitView visit={visit}/>
+                                                ))}
+                                            </>
+                                        );
+                                    })}
+                                </ListGroup>
+                            </Content>
+                        </Card.Body>
+                    </div>
                 </Collapse>
             </Card>
         );

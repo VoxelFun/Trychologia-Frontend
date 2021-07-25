@@ -2,11 +2,10 @@ import styled from "styled-components";
 import { VisitMeta } from "../../library/model/VisitMeta";
 import { Card, CardsContainer } from "../styled/Card";
 import { List, ListItem } from "../styled/List";
-import { CustomerVisitForm } from "./CustomerVisitForm";
+import { CustomerVisitForm, CustomerVisitsProps } from "./CustomerVisitForm";
 
-interface Props {
-    staffMemberName: string;
-    visitMeta: VisitMeta;
+interface Props extends CustomerVisitsProps {
+    
 }
 
 export function CustomerVisitCreator(props: Props) {

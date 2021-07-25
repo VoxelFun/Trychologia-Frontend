@@ -37,19 +37,21 @@ class WeekSchedulerCard extends Component<Props, State> {
                     Harmonogram
                 </Card.Header>
                 <Collapse in={isOpen}>
-                    <Card.Body>
-                        {weekSchedule.daySchedules.map((daySchedule, i) => (
-                            <DayScheduleCard
-                                key={i}
-                                dayId={i}
-                                daySchedule={daySchedule}
-                                updateDaySchedule={(update) => this.updateDaySchedule(daySchedule, update)}
-                            />
-                        ))}
-                        <Button onClick={() => this.save()}>
-                            Zapisz
-                        </Button>
-                    </Card.Body>
+                    <div>
+                        <Card.Body>
+                            {weekSchedule.daySchedules.map((daySchedule, i) => (
+                                <DayScheduleCard
+                                    key={i}
+                                    dayId={i}
+                                    daySchedule={daySchedule}
+                                    updateDaySchedule={(update) => this.updateDaySchedule(daySchedule, update)}
+                                />
+                            ))}
+                            <Button onClick={() => this.save()}>
+                                Zapisz
+                            </Button>
+                        </Card.Body>
+                    </div>
                 </Collapse>
             </Card>
         );

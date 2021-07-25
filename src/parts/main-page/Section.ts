@@ -8,13 +8,14 @@ interface SectionContainerProps {
 export const SectionContainer = styled.div<SectionContainerProps>`
     padding: 4em 2em;
     background: ${props => props.odd ? props.theme.primary : props.theme.grey};
+    width: 100%;
 
     @media (max-width: ${ScreenSize.lg}) {
         padding: 2em 1em;
     }
 
     @media (max-width: ${ScreenSize.md}) {
-        padding: 1em 0.5em;
+        padding: 1em 1em;
     }
 `;
 
