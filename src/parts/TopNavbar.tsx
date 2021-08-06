@@ -17,9 +17,7 @@ export function TopNavbar(props: Props) {
                     width="128"
                     height="128"
                     className="d-inline-block align-top"
-                    style={{position: "relative"}}
-                />{' '}
-                {Company.NAME}
+                />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

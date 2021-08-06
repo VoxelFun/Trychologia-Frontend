@@ -1,50 +1,66 @@
 import React from "react";
-import { Carousel } from "react-bootstrap";
+import { Carousel, Col, Row } from "react-bootstrap";
 import styled from "styled-components";
+import diagnozowanie from "./../../assets/service_type/diagnozowanie.jpg";
+import stymulacja from "./../../assets/service_type/stymulacja.jpg";
+import terapia from "./../../assets/service_type/terapia.jpg";
+import wypadanie from "./../../assets/service_type/wypadanie.jpg";
 
 export default function ServiceTypeView() {
     return (
         <Carousel fade>
             <Carousel.Item>
-                <img
+                <Photo
                     className="d-block w-100"
-                    src="https://assets.entrepreneur.com/content/3x2/2000/20200429211042-GettyImages-1164615296.jpeg?width=700&crop=2:1"
-                    alt="First slide"
+                    src={diagnozowanie}
                 />
                 <Overlap>
-                    <Title>Diagnozowanie i leczenie schorzeń owłosionej skóry głowy</Title>
+                    <Container className="align-items-center">
+                        <Col md={8}>
+                            <Title>Diagnozowanie i wspomaganie leczenia schorzeń owłosionej skóry głowy</Title>
+                        </Col>
+                    </Container>
                 </Overlap>
             </Carousel.Item>
             <Carousel.Item>
-                <img
+                <Photo
                     className="d-block w-100"
-                    src="https://assets.entrepreneur.com/content/3x2/2000/20200429211042-GettyImages-1164615296.jpeg?width=700&crop=2:1"
-                    alt="First slide"
+                    src={stymulacja}
                 />
                 <Overlap>
-                    <Title>Stymulacja i naturalna regeneracja łodygi włosa</Title>
+                    <Container className="align-items-center">
+                        <Col md={8}>
+                            <Title>Stymulacja i naturalna regeneracja łodygi włosa</Title>
+                        </Col>
+                    </Container>
                 </Overlap>
             </Carousel.Item>
             <Carousel.Item>
-                <img
+                <Photo
                     className="d-block w-100"
-                    src="https://assets.entrepreneur.com/content/3x2/2000/20200429211042-GettyImages-1164615296.jpeg?width=700&crop=2:1"
-                    alt="First slide"
+                    src={terapia}
                 />
                 <Overlap>
-                    <Title>Skuteczne terapie hamujące wypadanie włosów </Title>
-                    <Description>W naszej placówce pomożemy Ci uporać się z problemem nadmiernej utraty włosów</Description>
+                    <Container className="align-items-center">
+                        <Col md={8}>
+                            <Title>Skuteczne terapie hamujące wypadanie włosów </Title>
+                            <Description>W naszej placówce pomożemy Ci uporać się z problemem nadmiernej utraty włosów</Description>
+                        </Col>
+                    </Container>
                 </Overlap>
             </Carousel.Item>
             <Carousel.Item>
-                <img
+                <Photo
                     className="d-block w-100"
-                    src="https://assets.entrepreneur.com/content/3x2/2000/20200429211042-GettyImages-1164615296.jpeg?width=700&crop=2:1"
-                    alt="First slide"
+                    src={wypadanie}
                 />
                 <Overlap>
-                    <Title>Zatrzymanie wypadania włosów związanego z COVID-19</Title>
-                    <Description>W naszej placówce wykonujemy skuteczną mezoterapię peptydową która w efektywny sposób zatrzyma reakatywne wypadanie włosów</Description>
+                    <Container className="align-items-center">
+                        <Col md={8}>
+                            <Title>Zatrzymanie wypadania włosów związanego z COVID-19</Title>
+                            <Description>W naszej placówce wykonujemy skuteczną mezoterapię peptydową która w efektywny sposób zatrzyma reakatywne wypadanie włosów</Description>
+                        </Col>
+                    </Container>
                 </Overlap>
             </Carousel.Item>
         </Carousel>
@@ -52,12 +68,19 @@ export default function ServiceTypeView() {
 }
 
 const Overlap = styled.div`
-    background: white;
-    width: 50%;
+    /* background: white; */
+    width: 100%;
     height: 100%;
     position: absolute;
-    top: 0;
-    padding: 1rem;
+    top: -10vh;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    /* margin: 2rem; */
+    /* padding: 1rem; */
+`;
+
+const Container = styled(Row)`
+    height: 100%;
 `;
 
 const Title = styled.h3`
@@ -66,4 +89,11 @@ const Title = styled.h3`
 
 const Description = styled.div`
 
+`;
+
+const Photo = styled.img`
+    
+    object-fit: cover;
+width: 100%;
+height: 80vh;
 `;

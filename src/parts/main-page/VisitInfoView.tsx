@@ -26,7 +26,10 @@ function VisitInfoView(props: Props) {
                             Kto powinien się umówić?
                         </Card.Header>
                         <List>
-                            <ListItem></ListItem>
+                            <ListItem>osoby które zauważyły wzmożone wypadnie włosów </ListItem>
+                            <ListItem>osoby, które zauważyły nadmierne przerzedzenie włosów</ListItem>
+                            <ListItem>osoby u których kondycja łodygi włosa uległa pogorszeniu (suche, łamliwe włosy)</ListItem>
+                            <ListItem>osoby borykające się ze schorzeniami owłosionej skory głowy</ListItem>
                         </List>
                     </Card.Container>
                     <Card.Container>
