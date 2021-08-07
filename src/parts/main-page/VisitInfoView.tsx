@@ -50,7 +50,7 @@ function VisitInfoView(props: Props) {
                     </Card.Container>
                 </CardsContainer>
                 <ButtonContainer>
-                    <Button onClick={() => props.history.replace("/visit")}>
+                    <Button onClick={() => props.history.replace("/wizyta")}>
                         Umów się już dziś!
                     </Button>
                 </ButtonContainer>

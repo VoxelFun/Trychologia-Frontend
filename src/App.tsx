@@ -26,7 +26,7 @@ function App() {
                         )}
                     />
                     <Route
-                        exact path="/about"
+                        exact path="/zespol"
                         render={() => (
                             <CustomerPage>
                                 <AboutPage/>
@@ -56,7 +56,7 @@ function App() {
                         )}
                     />
                     <Route
-                        exact path="/visit"
+                        exact path="/wizyta"
                         render={() => (
                             <CustomerPage>
                                 <VisitPage/>

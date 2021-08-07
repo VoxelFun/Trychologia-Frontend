@@ -26,8 +26,8 @@ export function TopNavbar(props: Props) {
                     
                 </Nav>
                 <Nav>
-                    <Nav.Link onClick={() => props.redirect("/about")}>O nas</Nav.Link>
-                    <Nav.Link onClick={() => props.redirect("/visit")}>Umów wizytę</Nav.Link>
+                    <Nav.Link onClick={() => props.redirect("/zespol")}>O nas</Nav.Link>
+                    <Nav.Link onClick={() => props.redirect("/wizyta")}>Umów wizytę</Nav.Link>
                     <Nav.Link onClick={() => props.redirect("/zabiegi")}>Zabiegi</Nav.Link>
                     {/* <Nav.Link onClick={() => props.redirect("/enterprises/projects")}>Blog</Nav.Link> */}
                     <Nav.Link onClick={() => scrollTo(PageHook.Contact)}>Kontakt</Nav.Link>
