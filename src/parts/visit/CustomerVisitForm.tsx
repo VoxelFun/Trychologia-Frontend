@@ -106,12 +106,6 @@ export function CustomerVisitForm(props: CustomerVisitsProps) {
                 </Col>
             </Form.Group>
             <Form.Group controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" id="regulamin">
-                    <Form.Check.Input type="checkbox" required/>
-                    <Form.Check.Label>Akceptuję regulamin (wymagane)</Form.Check.Label>
-                </Form.Check>
-            </Form.Group>
-            <Form.Group controlId="formBasicCheckbox">
                 <Form.Check type="checkbox" id="zgoda">
                     <Form.Check.Input type="checkbox" required/>
                     <Form.Check.Label>Wyrażam zgodę na przetwarzanie moich danych osobowych, przez {Company.NAME}, w celu rezerwacji wizyty (wymagane)</Form.Check.Label>

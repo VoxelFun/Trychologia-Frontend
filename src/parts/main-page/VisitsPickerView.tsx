@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import { CustomerContext } from "../../contexts/CustomerContext";
+import { scrollTo } from "../../library/Document";
 import { VisitMeta } from "../../library/model/VisitMeta";
 import { Card } from "../styled/Card";
 import { CustomerVisitCreator } from "../visit/CustomerVisitCreator";
@@ -14,9 +15,7 @@ export default function VisitsPickerView() {
 
     function onPickVisit(visitMeta: VisitMeta) {
         setVisitMeta(visitMeta);
-        document.getElementById('form')!.scrollIntoView({
-            behavior: 'smooth'
-        });
+        scrollTo("form");
     }
 
     return (

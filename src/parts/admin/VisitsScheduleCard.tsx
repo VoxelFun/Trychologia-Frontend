@@ -104,10 +104,12 @@ class VisitsScheduleCard extends Component<Props, State> {
 
     getVisitsHolders() {
         const days = Object.keys(this.spotsHolders).map(day => parseInt(day));
-        return days.map(day => ({
-            day,
-            visits: this.getVisits(day)
-        }));
+        return days
+            .map(day => ({
+                day,
+                visits: this.getVisits(day)
+            }))
+            .filter(visitHolder => visitHolder.visits.length > 0);
     }
 
     toggleIsOpen() {

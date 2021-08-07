@@ -9,10 +9,10 @@ export const Company = {
 };
 
 export const VisitTypeLabel = {
-    [VisitType.FREE]: "Wolna",
-    [VisitType.CUSTOMER]: "Klient",
-    [VisitType.TREATMENT]: "Zabieg",
-    [VisitType.VACATION]: "Urlop",
+    [VisitType.FREE as number]: "Wolna",
+    [VisitType.CUSTOMER as number]: "Klient",
+    [VisitType.TREATMENT as number]: "Zabieg",
+    [VisitType.VACATION as number]: "Urlop",
 };
 
 export const VisitInfo = {

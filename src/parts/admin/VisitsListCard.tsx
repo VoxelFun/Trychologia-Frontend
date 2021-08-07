@@ -3,6 +3,7 @@ import React, { PureComponent, Component } from "react";
 import { Row } from "react-bootstrap";
 import { Button, Card, Col, Collapse, Form, ListGroup } from "react-bootstrap";
 import styled from "styled-components";
+import { VisitTypeLabel } from "../../data/Company";
 import { Visit, VisitType } from "../../library/model/Visit";
 import { VisitsHolder } from "../../library/model/VisitsHolder";
 import { Day } from "../../library/utils/Day";
@@ -30,7 +31,6 @@ class VisitsListCard extends Component<Props, State> {
     render() {
         const {visitsHolders} = this.props;
         const {isOpen} = this.state;
-        console.log(visitsHolders);
 
         return (
             <Card>
@@ -75,14 +75,22 @@ interface VisitViewProps {
 }
 
 function VisitView(props: VisitViewProps): JSX.Element {
-    return props.visit.type === VisitType.CUSTOMER ? (
+    return (
         <ListGroup.Item>
             <Row>
-                <Col>{new Hour(props.visit.start).toText()}</Col>
-                <Col>{props.visit.customer?.name}</Col>
+                <Col>{new Hour(props.visit.start).toText()} - {new Hour(props.visit.end).toText()}</Col>
+                {props.visit.customer ? (
+                    <>
+                        <Col>{props.visit.customer.name}</Col>
+                        <Col>{props.visit.customer.phone}</Col>
+                    </>
+                ) : (
+                    <Col>{VisitTypeLabel[props.visit.type]}</Col>
+                )}
+                
             </Row>
         </ListGroup.Item>
-    ) : <></>;
+    );
 }
 
 const Content = styled.div`

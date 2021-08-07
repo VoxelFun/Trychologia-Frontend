@@ -2,6 +2,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import { Company } from "../data/Company";
 import { PageHook } from "../library/PageHook";
 import logo from "../assets/logo.svg";
+import { scrollTo } from "../library/Document";
 
 interface Props {
     redirect: (path: string) => void;
@@ -29,7 +30,7 @@ export function TopNavbar(props: Props) {
                     <Nav.Link onClick={() => props.redirect("/visit")}>Umów wizytę</Nav.Link>
                     <Nav.Link onClick={() => props.redirect("/enterprises/projects")}>Zabiegi</Nav.Link>
                     {/* <Nav.Link onClick={() => props.redirect("/enterprises/projects")}>Blog</Nav.Link> */}
-                    <Nav.Link href={`#${PageHook.Contact}`}>Kontakt</Nav.Link>
+                    <Nav.Link onClick={() => scrollTo(PageHook.Contact)}>Kontakt</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
