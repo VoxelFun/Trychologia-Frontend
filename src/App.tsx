@@ -8,8 +8,8 @@ import LoginPage from './pages/LoginPage';
 import { CustomerPage } from './pages/CustomerPage';
 import VisitPage from './pages/VisitPage';
 import ScrollToTop from './parts/ScrollToTop';
-import StatutePage from './pages/StatutePage';
 import PolicyPage from './pages/PolicyPage';
+import TreatmentPage from './pages/TreatmentPage';
 
 function App() {
     return (
@@ -48,14 +48,6 @@ function App() {
                         )}
                     />
                     <Route
-                        path="/statute"
-                        render={() => (
-                            <CustomerPage>
-                                <StatutePage/>
-                            </CustomerPage>
-                        )}
-                    />
-                    <Route
                         path="/policy"
                         render={() => (
                             <CustomerPage>
@@ -68,6 +60,27 @@ function App() {
                         render={() => (
                             <CustomerPage>
                                 <VisitPage/>
+                            </CustomerPage>
+                        )}
+                    />
+                    <Route
+                        path="/zabiegi/:treatmentGroup/:treatment"
+                        render={props => (
+                            <CustomerPage>
+                                <TreatmentPage
+                                    id={{
+                                        group: props.match.params.treatmentGroup,
+                                        member: props.match.params.treatment,
+                                    }}
+                                />
+                            </CustomerPage>
+                        )}
+                    />
+                    <Route
+                        path="/zabiegi"
+                        render={() => (
+                            <CustomerPage>
+                                <TreatmentPage/>
                             </CustomerPage>
                         )}
                     />
