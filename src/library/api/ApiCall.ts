@@ -88,7 +88,7 @@ class ApiCall {
 
         const response = await fetch(`${BASE_API_URL}/${input}`, requestInit);
         if(!response.ok)
-            throw new Error("Something went wrong!");
+            throw new Error(`Request ${input} failed`);
         
         try {
             return await response.json();
