@@ -12,7 +12,7 @@ export default function AboutPage() {
         <Layout>
             <SectionContainer>
                 {staffMembers !== undefined ? (
-                    <CardsContainer xl={2}>
+                    <CardsContainer xs={1} xl={2}>
                         {staffMembers.map((staffMember, i) => (
                             <AboutStaffMember book={i === 0} staffMember={staffMember}/>
                         ))}
