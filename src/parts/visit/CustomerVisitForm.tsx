@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import {Form, Col, Row, Button, Spinner} from "react-bootstrap";
 import { Company } from "../../data/Company";
+import { POLICY_BASE_URL } from "../../data/Env";
 import ApiCall from "../../library/api/ApiCall";
 import { Customer, CustomerKey, DummyCustomer } from "../../library/model/Customer";
 import { VisitMeta } from "../../library/model/VisitMeta";
@@ -108,7 +109,10 @@ export function CustomerVisitForm(props: CustomerVisitsProps) {
             <Form.Group controlId="formBasicCheckbox">
                 <Form.Check type="checkbox" id="zgoda">
                     <Form.Check.Input type="checkbox" required/>
-                    <Form.Check.Label>Wyrażam zgodę na przetwarzanie moich danych osobowych, przez {Company.NAME}, w celu rezerwacji wizyty (wymagane)</Form.Check.Label>
+                    <Form.Check.Label>
+                        Wyrażam zgodę na przetwarzanie moich danych osobowych, przez {Company.NAME}, w celu rezerwacji wizyty.{" "}
+                        <a href={`${POLICY_BASE_URL}/privacy-policy.html`} target={"_blank"}>Dowiedz się więcej</a>
+                    </Form.Check.Label>
                 </Form.Check>
             </Form.Group>
             <Button type="Submit">
