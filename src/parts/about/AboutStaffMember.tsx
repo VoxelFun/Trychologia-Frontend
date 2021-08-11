@@ -6,28 +6,29 @@ import { SectionContainer } from "../main-page/Section";
 import { RouteComponentProps, withRouter } from "react-router";
 
 interface Props extends RouteComponentProps<any> {
+    book: boolean;
     staffMember: SafeStaffMember;
 }
 
 function AboutStaffMember(props: Props) {
     const {staffMember} = props;
     return (
-        <SectionContainer>
-            <Card.Container>
-                {/* <Card.Img variant="top"/> */}
-                <Card.Header>
-                    {staffMember.name}
-                </Card.Header>
-                <Card.Body>
-                    {staffMember.description}
-                </Card.Body>
-                <Card.Footer>
+        <Card.Container>
+            {/* <Card.Img variant="top"/> */}
+            <Card.Header>
+                {staffMember.name}
+            </Card.Header>
+            <Card.Body>
+                {staffMember.description}
+            </Card.Body>
+            <Card.Footer>
+                {props.book && (
                     <Button onClick={() => props.history.replace("/wizyta")}>
                         Umów wizytę
                     </Button>
-                </Card.Footer>
-            </Card.Container>
-        </SectionContainer>
+                )}
+            </Card.Footer>
+        </Card.Container>
         
         // <Card>
         //     <Row>

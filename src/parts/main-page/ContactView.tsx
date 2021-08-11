@@ -16,10 +16,11 @@ export default function ContactView() {
                     <p>e-mail: {Company.EMAIL}</p>
                     <p>
                         Godziny otwarcia:<br/>
-                        Pn-Pt 8:00-18:00
+                        Pn-Pt 10:00-18:00<br/>
+                        Sb 10:00-12:30
                     </p>
                     <div>
-                        <FacebookOutlined style={{fontSize: 32}}/>
+                        <a href={"https://www.facebook.com/145480511000201/"} target={"_blank"}><FacebookOutlined style={{fontSize: 32, color: "white"}}/></a>
                         <InstagramOutlined style={{fontSize: 32}}/>
                     </div>
                 </Col>

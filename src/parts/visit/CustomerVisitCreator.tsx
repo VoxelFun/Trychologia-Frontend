@@ -18,7 +18,7 @@ export function CustomerVisitCreator(props: Props) {
                     <List>
                         <ListItem>Nie myj głowy minumum 24h przed badaniem</ListItem>
                         <ListItem>Nie stosuj środków do stylizacji włosów</ListItem>
-                        <ListItem>Możesz zabrać ze sobą aktualne badanie krwii</ListItem>
+                        <ListItem>Możesz zabrać ze sobą aktualne badania</ListItem>
                     </List>
                     </Card.Body>
                 </Card.Container>

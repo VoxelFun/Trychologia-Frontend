@@ -4,22 +4,23 @@ import { useContext } from "react";
 import { CustomerContext } from "../contexts/CustomerContext";
 import { WaitingOverlay } from "../components/WaitingOverlay";
 import { CardsContainer } from "../parts/styled/Card";
+import { SectionContainer } from "../parts/main-page/Section";
 
 export default function AboutPage() {
     const staffMembers = useContext(CustomerContext).state.safeStaffMembers;
     return (
         <Layout>
-            <div>
+            <SectionContainer>
                 {staffMembers !== undefined ? (
                     <CardsContainer xl={2}>
-                        {staffMembers.map(staffMember => (
-                            <AboutStaffMember staffMember={staffMember}/>
+                        {staffMembers.map((staffMember, i) => (
+                            <AboutStaffMember book={i === 0} staffMember={staffMember}/>
                         ))}
                     </CardsContainer>
                 ) : (
                     <WaitingOverlay/>
                 )}
-            </div>
+            </SectionContainer>
         </Layout>
     );
 }
