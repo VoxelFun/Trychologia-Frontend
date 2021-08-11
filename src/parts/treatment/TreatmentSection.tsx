@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Treatment } from "../../data/Treatment";
+import { Card } from "../styled/Card";
 
 export interface TreatmentSectionProps {
     treatment: Treatment;
@@ -13,8 +14,10 @@ export default abstract class TreatmentSection extends React.PureComponent<Treat
 
         return (
             <div>
-                {treatment.label}
-                {this.Content()}
+                <Card.Header>{treatment.label}</Card.Header>
+                <Card.Body>
+                    {this.Content()}
+                </Card.Body>
             </div>
         );
     }
@@ -25,6 +28,6 @@ export default abstract class TreatmentSection extends React.PureComponent<Treat
 
 export const TreatmentComp = {
     Paragraph: styled.p`
-
+        text-indent: 2em;
     `,
 };

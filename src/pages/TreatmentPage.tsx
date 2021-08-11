@@ -3,6 +3,8 @@ import { Col, Row } from "react-bootstrap";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { Treatment, TreatmentGroups } from "../data/Treatment";
 import Layout from "../parts/Layout";
+import { SectionContainer } from "../parts/main-page/Section";
+import { Card } from "../parts/styled/Card";
 import TreatmentMenu from "../parts/treatment/TreatmentMenu";
 
 export interface TreatmentId {
@@ -36,18 +38,20 @@ function TreatmentPage(props: Props) {
 
     return (
         <Layout>
-            <Row>
-                <Col>
-                    <TreatmentMenu
-                        treatmentId={treatmentId}
-                        setGroup={setGroup}
-                        setMember={setMember}
-                    />
-                </Col>
-                <Col>
-                    {treatment.render({treatment})}
-                </Col>
-            </Row>
+            <SectionContainer>
+                <Row xs={1} md={2}>
+                    <Col md={4}>
+                        <TreatmentMenu
+                            treatmentId={treatmentId}
+                            setGroup={setGroup}
+                            setMember={setMember}
+                        />
+                    </Col>
+                    <Card.Container md={8}>
+                        {treatment.render({treatment})}
+                    </Card.Container>
+                </Row>
+            </SectionContainer>
         </Layout>
     );
 }

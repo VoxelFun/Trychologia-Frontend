@@ -5,7 +5,7 @@ export const Company = {
     NAME: "TrychoMedical",
     ADDRESS: "Norberta Barlickiego 11/I, 44-100 Gliwice",
     PHONE: "+48 533 519 305",
-    EMAIL: "klinika@open.mail"
+    EMAIL: "trychomedical@gmail.com"
 };
 
 export const VisitTypeLabel = {

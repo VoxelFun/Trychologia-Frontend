@@ -1,10 +1,10 @@
 
 export const DEV_ENV = process.env.NODE_ENV === "development";
 
-const PRODUCTION_URL = "http://trychologia.pl";
+const PRODUCTION_URL = "http://trychomedical.pl";
 const DEV_URL = "http://localhost:3000";
 
-const SERVER_PRODUCTION_URL = "http://backend.trychologia.pl";
+const SERVER_PRODUCTION_URL = "http://backend.trychomedical.pl";
 const SERVER_DEV_URL = "http://localhost:5000";
 
 export const BASE_URL = DEV_ENV ? DEV_URL : PRODUCTION_URL;
