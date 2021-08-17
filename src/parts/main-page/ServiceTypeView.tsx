@@ -58,7 +58,7 @@ export default function ServiceTypeView() {
                     <Container className="align-items-center">
                         <Col md={8}>
                             <Title>Zatrzymanie wypadania włosów związanego z COVID-19</Title>
-                            <Description>W naszej placówce wykonujemy skuteczną mezoterapię peptydową która w efektywny sposób zatrzyma reakatywne wypadanie włosów</Description>
+                            <Description>W naszej placówce wykonujemy skuteczną mezoterapię peptydową, która w efektywny sposób zatrzymuje reaktywne wypadanie włosów</Description>
                         </Col>
                     </Container>
                 </Overlap>
