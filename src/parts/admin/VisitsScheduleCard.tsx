@@ -116,10 +116,15 @@ class VisitsScheduleCard extends Component<Props, State> {
         this.setState({isOpen: !this.state.isOpen});
     }
 
-    save() {
-        new ApiCall().saveVisits({
-            visitsHolders: this.getVisitsHolders()
-        });
+    async save() {
+        try {
+            await new ApiCall().saveVisits({
+                visitsHolders: this.getVisitsHolders()
+            });
+            window.location.reload();
+        } catch {
+            
+        }
     }
 
 }

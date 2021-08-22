@@ -61,9 +61,14 @@ class WeekSchedulerCard extends Component<Props, State> {
         this.setState({isOpen: !this.state.isOpen});
     }
 
-    save() {
+    async save() {
         const {weekSchedule} = this.state;
-        new ApiCall().updateWeekSchedule(weekSchedule.toWeekSchedule());
+        try {
+            await new ApiCall().updateWeekSchedule(weekSchedule.toWeekSchedule());
+            window.location.reload();
+        } catch {
+            
+        }
     }
 
     updateDaySchedule(daySchedule: UiDaySchedule, update: (daySchedule: UiDaySchedule) => void) {

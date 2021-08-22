@@ -82,6 +82,7 @@ abstract class VisitsPicker<TProps extends VisitsPickerProps<SafeStaffMember>, T
                 </DatePickerContainer>
                 <TableContainer>
                     <Table>
+                        <tbody>
                         <Row>
                             <EmptyCell/>
                             {spotsHolders.map((spotsHolder, i) => (
@@ -130,6 +131,7 @@ abstract class VisitsPicker<TProps extends VisitsPickerProps<SafeStaffMember>, T
                                 })}
                             </Row>
                         ))}
+                        </tbody>
                     </Table>
                 </TableContainer>
             </div>

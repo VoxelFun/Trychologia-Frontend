@@ -69,9 +69,14 @@ class StaffMemberCard extends Component<Props, State> {
         this.setState({isOpen: !this.state.isOpen});
     }
 
-    save() {
+    async save() {
         const {staffMember} = this.props;
-        new ApiCall().setStaffMember(staffMember);
+        try {
+            await new ApiCall().setStaffMember(staffMember);
+            window.location.reload();
+        } catch {
+
+        }
     }
 
 }

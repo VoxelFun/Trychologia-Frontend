@@ -22,8 +22,9 @@ export class VisitsScheduler {
     }
     
     constructor(private weekSchedule: SafeWeekSchedule) {
-        this.start = CollectionUtils.min(weekSchedule.daySchedules, daySchedule => daySchedule.start);
-        this.end = CollectionUtils.max(weekSchedule.daySchedules, daySchedule => daySchedule.end);
+        const daySchedules = weekSchedule.daySchedules.filter(daySchedule => daySchedule.active);
+        this.start = CollectionUtils.min(daySchedules, daySchedule => daySchedule.start);
+        this.end = CollectionUtils.max(daySchedules, daySchedule => daySchedule.end);
         this.visitsHolders = weekSchedule.visitsHolders;
         this.spotsHolders = {};
     }
@@ -43,20 +44,20 @@ export class VisitsScheduler {
                 continue;
             }
 
-            const spots: Spot[] = [];
-            const current = new Hour(this.start);
-            const times: string[] | undefined = this.spotsTimes.length ? undefined : [];
-
             const visitsHolderParser = new VisitsHolderParser(this.visitsHolders[day.getValue()]);
             const daySchedule = this.weekSchedule.daySchedules[day.getWeekday()];
             const spotsHolder = new SpotsHolder(day.getValue());
+            
+            const spots: Spot[] = [];
+            const current = new Hour(this.start);
+            const times: string[] | undefined = this.spotsTimes.length ? undefined : [];
 
             while(current.isBefore(end)) {
                 const time = current.toMinutes();
                 let spotType: SpotType;
 
 
-                if(!daySchedule.active || dayNow.getValue() > day.getValue() || dayNow.getValue() === day.getValue() && current.isBefore(hourNow) || daySchedule.start > time || daySchedule.end < time){
+                if(!daySchedule.active || dayNow.getValue() > day.getValue() || dayNow.getValue() === day.getValue() && current.isBefore(hourNow) || daySchedule.start > time || daySchedule.end <= time){
                     spotType = SpotType.UNAVAILABLE;
                 } else {
                     spotType = visitsHolderParser.getSpotType(time);

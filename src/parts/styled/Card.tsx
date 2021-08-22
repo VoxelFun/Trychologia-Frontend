@@ -16,6 +16,8 @@ const CardContainer = styled.div`
     width: 100%;
     background: ${props => props.theme.white};
     display: table;
+    /* border-collapse: separate;
+    border-spacing: 0 .75rem;  */
 
     padding: 4em 2em;
     @media (max-width: ${ScreenSize.lg}) {
