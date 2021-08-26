@@ -1,3 +1,7 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow: /admin
+Disallow: /logout
+Allow: /zespol
+Allow: /wizyta
+Allow: /zabiegi

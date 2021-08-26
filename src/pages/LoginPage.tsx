@@ -56,7 +56,7 @@ class LoginPage extends React.Component<Props, State> {
                 //TODO: handle login error
             }
         } catch(error) {
-            console.log(error);
+            
         }
         
         

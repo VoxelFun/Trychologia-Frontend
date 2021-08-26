@@ -13,7 +13,7 @@ export function TopNavbar(props: Props) {
         <Navbar bg="light" expand="md" sticky="top">
             <Navbar.Brand onClick={() => props.redirect("/")}>
                 <img
-                    alt=""
+                    alt="Logo TrychoMedical"
                     src={logo}
                     width="128"
                     height="128"

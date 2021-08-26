@@ -13,6 +13,7 @@ export default function ServiceTypeView() {
                 <Photo
                     className="d-block w-100"
                     src={diagnozowanie}
+                    alt="Biurko w gabinecie"
                 />
                 <Overlap>
                     <Container className="align-items-center">
@@ -26,6 +27,7 @@ export default function ServiceTypeView() {
                 <Photo
                     className="d-block w-100"
                     src={stymulacja}
+                    alt="Wysuszone włosy"
                 />
                 <Overlap>
                     <Container className="align-items-center">
@@ -39,6 +41,7 @@ export default function ServiceTypeView() {
                 <Photo
                     className="d-block w-100"
                     src={terapia}
+                    alt="Odżywka do włosów"
                 />
                 <Overlap>
                     <Container className="align-items-center">
@@ -53,6 +56,7 @@ export default function ServiceTypeView() {
                 <Photo
                     className="d-block w-100"
                     src={wypadanie}
+                    alt="Gęste włosy"
                 />
                 <Overlap>
                     <Container className="align-items-center">
