@@ -1,10 +1,12 @@
 import { VisitType } from "../library/model/Visit";
 
+const PHONE = "533 519 305";
 
 export const Company = {
     NAME: "TrychoMedical",
     ADDRESS: "Norberta Barlickiego 11/I, 44-100 Gliwice",
-    PHONE: "+48 533 519 305",
+    PHONE: PHONE,
+    FULL_PHONE: "+48 " + PHONE,
     EMAIL: "trychomedical@gmail.com"
 };
 

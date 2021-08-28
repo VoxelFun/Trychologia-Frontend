@@ -12,7 +12,7 @@ export default function ContactView() {
                     <p>{Company.NAME}</p>
                     <div>{Company.ADDRESS}</div>
                     <p>Gabinet Sztuk Pięknych</p>
-                    <p>tel: {Company.PHONE}</p>
+                    <p>tel: {Company.FULL_PHONE}</p>
                     <p>e-mail: {Company.EMAIL}</p>
                     <p>
                         Godziny otwarcia:<br/>

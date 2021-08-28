@@ -25,7 +25,7 @@ function App() {
                         )}
                     />
                     <Route
-                        exact path="/zespol"
+                        exact path="/gabinet"
                         render={() => (
                             <CustomerPage>
                                 <AboutPage/>

@@ -1,10 +1,17 @@
 import { useState } from "react";
+import { Button } from "react-bootstrap";
+import { RouteComponentProps, withRouter } from "react-router";
 import { Comments } from "../../data/Comment";
 import RandomUtils from "../../utils/RandomUtils";
 import { Card, CardsContainer } from "../styled/Card";
 import { SectionBody, SectionContainer, SectionHeader } from "./Section";
+import { ButtonContainer } from "./VisitInfoView";
 
-export default function CommentsView() {
+interface Props extends RouteComponentProps<any> {
+    
+}
+
+function CommentsView(props: Props) {
     const [comments, _] = useState(RandomUtils.getNumbersArray(0, Comments.length, 3).map(id => Comments[id]));
 
     return (
@@ -25,7 +32,14 @@ export default function CommentsView() {
                         </Card.Container>
                     ))}
                 </CardsContainer>
+                <ButtonContainer>
+                    <Button onClick={() => props.history.replace("/gabinet")}>
+                        Dowiedz się więcej!
+                    </Button>
+                </ButtonContainer>
             </SectionBody>
         </SectionContainer>
     );
 }
+
+export default withRouter(CommentsView);

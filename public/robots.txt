@@ -2,6 +2,6 @@
 User-agent: *
 Disallow: /admin
 Disallow: /logout
-Allow: /zespol
+Allow: /gabinet
 Allow: /wizyta
 Allow: /zabiegi

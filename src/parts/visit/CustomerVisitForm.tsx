@@ -103,7 +103,7 @@ export function CustomerVisitForm(props: CustomerVisitsProps) {
                     Numer telefonu
                 </Form.Label>
                 <Col sm="10">
-                    <Form.Control placeholder="660 250 102" onChange={e => onChange("phone", e)} required/>
+                    <Form.Control placeholder={Company.PHONE} onChange={e => onChange("phone", e)} required/>
                 </Col>
             </Form.Group>
             <Form.Group controlId="formBasicCheckbox">
