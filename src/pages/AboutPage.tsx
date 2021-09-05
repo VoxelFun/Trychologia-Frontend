@@ -37,5 +37,5 @@ export default function AboutPage() {
 }
 
 const Paragraph = styled.p`
-    text-indent: 2em;
+    
 `;
