@@ -9,6 +9,7 @@ import VisitPage from './pages/VisitPage';
 import ScrollToTop from './parts/ScrollToTop';
 import PolicyPage from './pages/PolicyPage';
 import TreatmentPage from './pages/TreatmentPage';
+import BlogPage from './pages/BlogPage';
 
 function App() {
     return (
@@ -80,6 +81,22 @@ function App() {
                         render={() => (
                             <CustomerPage>
                                 <TreatmentPage/>
+                            </CustomerPage>
+                        )}
+                    />
+                    <Route
+                        path="/blog/:topicId"
+                        render={props => (
+                            <CustomerPage>
+                                <BlogPage topicId={props.match.params.topicId}/>
+                            </CustomerPage>
+                        )}
+                    />
+                    <Route
+                        path="/blog"
+                        render={() => (
+                            <CustomerPage>
+                                <BlogPage/>
                             </CustomerPage>
                         )}
                     />

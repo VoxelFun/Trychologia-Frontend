@@ -29,7 +29,7 @@ export function TopNavbar(props: Props) {
                     <Nav.Link onClick={() => props.redirect("/gabinet")}>O nas</Nav.Link>
                     <Nav.Link onClick={() => props.redirect("/wizyta")}>Umów wizytę</Nav.Link>
                     <Nav.Link onClick={() => props.redirect("/zabiegi")}>Zabiegi</Nav.Link>
-                    {/* <Nav.Link onClick={() => props.redirect("/enterprises/projects")}>Blog</Nav.Link> */}
+                    <Nav.Link onClick={() => props.redirect("/blog")}>Blog</Nav.Link>
                     <Nav.Link onClick={() => scrollTo(PageHook.Contact)}>Kontakt</Nav.Link>
                 </Nav>
             </Navbar.Collapse>

@@ -107,11 +107,34 @@ export function CustomerVisitForm(props: CustomerVisitsProps) {
                 </Col>
             </Form.Group>
             <Form.Group controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" id="zgoda">
+                <Form.Check type="checkbox" id="zgoda1">
                     <Form.Check.Input type="checkbox" required/>
                     <Form.Check.Label>
-                        Wyrażam zgodę na przetwarzanie moich danych osobowych, przez {Company.NAME}, w celu rezerwacji wizyty.{" "}
-                        <a href={`${POLICY_BASE_URL}/privacy-policy.html`} target={"_blank"}>Dowiedz się więcej</a>
+                        Akceptuję <a href={`${POLICY_BASE_URL}/polityka-prywatnosci.html`} target={"_blank"}>politykę prywatności</a>
+                    </Form.Check.Label>
+                </Form.Check>
+            </Form.Group>
+            <Form.Group controlId="formBasicCheckbox">
+                <Form.Check type="checkbox" id="zgoda2">
+                    <Form.Check.Input type="checkbox" required/>
+                    <Form.Check.Label>
+                        Zgadzam się na <a href={`${POLICY_BASE_URL}/przetwarzanie-danych-osobowych-niezbednych-do-rejestracji-wizyty.html`} target={"_blank"}>przetwarzanie danych osobowych niezbędnych do rejestracji wizyty.</a>
+                    </Form.Check.Label>
+                </Form.Check>
+            </Form.Group>
+            <Form.Group controlId="formBasicCheckbox">
+                <Form.Check type="checkbox" id="zgoda3">
+                    <Form.Check.Input type="checkbox"/>
+                    <Form.Check.Label>
+                        Zgadzam się na <a href={`${POLICY_BASE_URL}/przetwarzanie-danych-osobowych-zwiazana-z-przekazywaniem-informacji-handlowych.html`} target={"_blank"}>przetwarzanie danych osobowych związanych z przekazywaniem informacji handlowych.</a>
+                    </Form.Check.Label>
+                </Form.Check>
+            </Form.Group>
+            <Form.Group controlId="formBasicCheckbox">
+                <Form.Check type="checkbox" id="zgoda4">
+                    <Form.Check.Input type="checkbox"/>
+                    <Form.Check.Label>
+                        Zgadzam się na <a href={`${POLICY_BASE_URL}/przekazywanie-informacji-handlowych-i-promocyjnych-droga-elektroniczna.html`} target={"_blank"}>przekazywanie informacji handlowych i promocyjnych drogą elektroniczna.</a>
                     </Form.Check.Label>
                 </Form.Check>
             </Form.Group>
