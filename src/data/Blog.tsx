@@ -5,7 +5,7 @@ export interface Blog {
     id: string;
     title: string;
     text: JSX.Element;
-    sources: string[];
+    sources?: string[];
 }
 
 const Paragraph = styled.p`
@@ -33,6 +33,24 @@ export const BlogTopics: Blog[] = [
             "https://onlinelibrary.wiley.com/doi/full/10.1046/j.1365-2230.2002.01081.x?sid=nlm%3Apubmed",
             "https://sklep.centrumzdrowegowlosa.pl/blog/trycholog-i-gabinety-trychologiczne-w-polsce-fakty-i-mity/",
         ]
+    },
+    {
+        id: "badanie-trychologiczne",
+        title: "Badanie trychologiczne. Jak wygląda? Jak się do niego przygotować?",
+        text: (
+            <>
+            <Paragraph>
+            Podczas pierwszej rozmowy telefonicznej z osobami, które rozważają wizytę w naszym gabinecie trychologicznym często pojawiają się pytania, na czym właściwie polega konsultacja trychologiczna, co możemy wynieść z takiego badania i jakie są dalsze etapy działania. Zdarza się również, że klienci zastanawiają się czy mogą od razu umówić się na zabieg z pominięciem pierwszej wizyty diagnostycznej. <b>Mimo odczuwanych wątpliwości zachęcamy żeby z takiego badania skorzystać. </b> Dlaczego to takie ważne? Podczas badania trychologicznego wykorzystujemy trichoskopie. Jest to podstawowe badanie diagnostyczne, podczas którego korzystając z zaawansowanego sprzętu optycznego jesteśmy w  stanie wykonać analizę powierzchni skóry głowy, stanu mieszków włosowych czy struktury naczyń krwionośnych jak i również pozwala nam to zaobserwować wszelkie nieprawidłowości w budowie samej łodygi włosa skóry głowy oraz brwi i rzęs, które są ważnym wyznacznikiem w niektórych rodzajach łysienia. Analiza tych parametrów pozwala wstępnie zdiagnozować problem z jakim się zmagamy i pozwoli na dobranie odpowiednich kuracji, które pomogą w rozwiązaniu problemu. <b>Zdarza się również, że trichoskopia jest niezbędna, szczególnie przed wykonaniem zabiegów iniekcyjnych takich jak mezoterapia czy karboksyterapia skóry głowy. </b> Dlaczego? Każde przesłanki świadczące o tym, że możemy mieć do czynienia choćby z łysieniem bliznowaciejącym, są absolutnym przeciwskazaniem do wykonania zabiegów iniekcyjnych, gdyż mogą pojawić się niechciane skutki uboczne. Bez wykonania trichoskopii nie jesteśmy w stanie określić specyficznych cech charakteryzujących dane łysienie, a stanowiących czynnik do rezygnacji z przeprowadzenia zabiegu ze względu na potencjalne niepożądane efekty uboczne. Często w gabinetach kosmetologicznych, bądź kosmetycznych wykonywane są ostrzykiwania skóry głowy bez wstępnego badania kamerą trichoskopową, której dany gabinet nie posiada na wyposażeniu. W związku z powyższym nie ma możliwości wykonać takiego badania przed zabiegiem. Kuracja w takim przypadku może mieć mniej satysfakcjonujące efekty, ze względu na to, że bez tej wiedzy nie znamy przyczyny danego problemu, ani tego co się dzieje na skórze głowy i w okolicy mieszków włosowych.   <b>Dlatego tak ważna jest profesjonalna analiza trichoskopowa skóry przed zabiegami, której w gabinecie TrychoMedical tak bardzo przestrzegamy i uważamy, że powinna być punktem wyjścia dla wszystkich zabiegów trychologicznych. </b>
+            </Paragraph>
+            <Paragraph> 
+            Podczas badania trychologicznego pierwszym punktem jest <b>przeprowadzenie dokładnego i szczegółowego wywiadu. </b> Dowiadujemy się z niego między innymi o nawykach związanych z trybem życia, ilością snu w ciągu doby, żywieniem, a także o chorobach współistniejących czy przyjmowanych lekach, które mogą mieć związek między innymi z wypadaniem telogenowym włosów. Kolejnym krokiem jest zebranie informacji o pielęgnacji domowej: szamponach, wcierkach czy odżywkach. Możemy wtedy ocenić skład danych produktów i (jeśli jest taka potrzeba) zasugerować zmianę, bądź naprowadzić na składniki odżywcze, które będą łatwiej przyswajalne i odpowiednie dla naszej skóry głowy. <b>Następnie przechodzimy już do właściwego badania trychologicznego</b>, w trakcie którego dokładnie omawiamy wszelkie zmiany pojawiające się w obrazie kamery i tłumaczymy z czego mogą wynikać. Kolejnym krokiem jest <b>sporządzenie indywidualnego planu trychoterapii</b>, który obejmuje zabiegi profesjonalne, pielęgnacje domową, ewentualną suplementacje oraz badania diagnostyczne (w gabinecie TrychoMedical współpracujemy z laboratorium diagnostycznym, dzięki czemu nasi klienci mogą liczyć na zniżki na badania).
+            </Paragraph>
+            <Paragraph>
+            <b>Jak się przygotować przed badaniem? </b> 
+            Jeśli to możliwe to nie należy myć skóry głowy w dniu badania trychologicznego, ani nie nakładać środków do stylizacji włosów. Mogą Państwo również przygotować nazwy i składy produktów jakich używamy w codziennej pielęgnacji skóry głowy, a resztą zajmiemy się na miejscu :) 
+            </Paragraph>
+            </>
+        )
     },
 ];
 

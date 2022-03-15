@@ -18,14 +18,16 @@ export default abstract class TextSection extends React.PureComponent<TextSectio
                 <Card.Body>
                     {blog.text}
                 </Card.Body>
-                <Card.Footer>
-                    <div>Źródła:</div>
-                    {blog.sources.map(source => (
-                        <div>
-                            <a href={source}>{source}</a>
-                        </div>
-                    ))}
-                </Card.Footer>
+                {blog.sources && (
+                    <Card.Footer>
+                        <div>Źródła:</div>
+                        {blog.sources.map(source => (
+                            <Source>
+                                <a href={source}>{source}</a>
+                            </Source>
+                        ))}
+                    </Card.Footer>
+                )}
             </div>
         );
     }
@@ -34,8 +36,9 @@ export default abstract class TextSection extends React.PureComponent<TextSectio
 
 }
 
-export const TreatmentComp = {
-    Paragraph: styled.p`
-        text-indent: 2em;
-    `,
-};
+const Source = styled.div`
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+`;
