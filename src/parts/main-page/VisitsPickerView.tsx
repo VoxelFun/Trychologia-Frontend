@@ -34,7 +34,7 @@ export default function VisitsPickerView() {
                         />
                     </Card.Body>
                     <Card.Footer>
-                        Cena wizyty: 80zł
+                        Cena wizyty: 90zł
                     </Card.Footer>
                 </Card.Container>
                 <div id="form"/>
